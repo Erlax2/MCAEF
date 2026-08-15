@@ -1,5 +1,0 @@
-=== STRINGS DE JOINTS ===
-Chest
-Head
-Root
-Torso

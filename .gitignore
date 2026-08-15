@@ -21,3 +21,15 @@ crash-reports/
 # OS / misc
 .DS_Store
 *.log
+
+# Local development / reverse-engineering notes
+all
+original
+epic-joint-names.txt
+epic-original-layer-usage.txt
+mca-body-models.txt
+mca-body-next.txt
+mca-common-body.txt
+mcaef-body-hooks.txt
+mcaef-torso-bridge.txt
+tcrcoremod.txt
