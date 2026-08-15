@@ -1,0 +1,875 @@
+Compiled from "TCRCoreMod.java"
+public class com.p1nero.tcrcore.TCRCoreMod {
+  public static final java.lang.String MOD_ID;
+
+  public static final org.slf4j.Logger LOGGER;
+
+  private static boolean coolMod;
+
+  private static boolean worldEditLoaded;
+
+  private static boolean xaeroMapLoaded;
+
+  private static boolean journeyMapLoaded;
+
+  private static boolean epicParCoolLoaded;
+
+  public com.p1nero.tcrcore.TCRCoreMod(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext);
+    Code:
+       0: aload_0
+       1: invokespecial #42                 // Method java/lang/Object."<init>":()V
+       4: getstatic     #48                 // Field yesman/epicfight/skill/SkillSlot.ENUM_MANAGER:Lyesman/epicfight/api/utils/ExtendableEnumManager;
+       7: ldc           #29                 // String tcrcore
+       9: ldc           #50                 // class com/p1nero/tcrcore/gameassets/TCRSkillSlots
+      11: invokevirtual #56                 // Method yesman/epicfight/api/utils/ExtendableEnumManager.registerEnumCls:(Ljava/lang/String;Ljava/lang/Class;)V
+      14: aload_1
+      15: invokevirtual #62                 // Method net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext.getModEventBus:()Lnet/minecraftforge/eventbus/api/IEventBus;
+      18: astore_2
+      19: aload_2
+      20: aload_0
+      21: invokedynamic #81,  0             // InvokeDynamic #0:accept:(Lcom/p1nero/tcrcore/TCRCoreMod;)Ljava/util/function/Consumer;
+      26: invokeinterface #87,  2           // InterfaceMethod net/minecraftforge/eventbus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      31: aload_2
+      32: aload_0
+      33: invokedynamic #94,  0             // InvokeDynamic #1:accept:(Lcom/p1nero/tcrcore/TCRCoreMod;)Ljava/util/function/Consumer;
+      38: invokeinterface #87,  2           // InterfaceMethod net/minecraftforge/eventbus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      43: getstatic     #100                // Field com/p1nero/tcrcore/client/sound/TCRSounds.REGISTRY:Lnet/minecraftforge/registries/DeferredRegister;
+      46: aload_2
+      47: invokevirtual #106                // Method net/minecraftforge/registries/DeferredRegister.register:(Lnet/minecraftforge/eventbus/api/IEventBus;)V
+      50: getstatic     #109                // Field com/p1nero/tcrcore/entity/TCREntities.REGISTRY:Lnet/minecraftforge/registries/DeferredRegister;
+      53: aload_2
+      54: invokevirtual #106                // Method net/minecraftforge/registries/DeferredRegister.register:(Lnet/minecraftforge/eventbus/api/IEventBus;)V
+      57: getstatic     #112                // Field com/p1nero/tcrcore/block/TCRBlocks.REGISTRY:Lnet/minecraftforge/registries/DeferredRegister;
+      60: aload_2
+      61: invokevirtual #106                // Method net/minecraftforge/registries/DeferredRegister.register:(Lnet/minecraftforge/eventbus/api/IEventBus;)V
+      64: getstatic     #115                // Field com/p1nero/tcrcore/block/entity/TCRBlockEntities.REGISTRY:Lnet/minecraftforge/registries/DeferredRegister;
+      67: aload_2
+      68: invokevirtual #106                // Method net/minecraftforge/registries/DeferredRegister.register:(Lnet/minecraftforge/eventbus/api/IEventBus;)V
+      71: getstatic     #118                // Field com/p1nero/tcrcore/item/TCRItems.REGISTRY:Lnet/minecraftforge/registries/DeferredRegister;
+      74: aload_2
+      75: invokevirtual #106                // Method net/minecraftforge/registries/DeferredRegister.register:(Lnet/minecraftforge/eventbus/api/IEventBus;)V
+      78: getstatic     #123                // Field com/p1nero/tcrcore/item/TCRItemTabs.TABS:Lnet/minecraftforge/registries/DeferredRegister;
+      81: aload_2
+      82: invokevirtual #106                // Method net/minecraftforge/registries/DeferredRegister.register:(Lnet/minecraftforge/eventbus/api/IEventBus;)V
+      85: getstatic     #126                // Field com/p1nero/tcrcore/effect/TCREffects.REGISTRY:Lnet/minecraftforge/registries/DeferredRegister;
+      88: aload_2
+      89: invokevirtual #106                // Method net/minecraftforge/registries/DeferredRegister.register:(Lnet/minecraftforge/eventbus/api/IEventBus;)V
+      92: getstatic     #131                // Field com/p1nero/tcrcore/worldgen/TCRStructures.STRUCTURE_TYPES:Lnet/minecraftforge/registries/DeferredRegister;
+      95: aload_2
+      96: invokevirtual #106                // Method net/minecraftforge/registries/DeferredRegister.register:(Lnet/minecraftforge/eventbus/api/IEventBus;)V
+      99: getstatic     #134                // Field com/p1nero/tcrcore/worldgen/TCRStructures.STRUCTURE_PIECE:Lnet/minecraftforge/registries/DeferredRegister;
+     102: aload_2
+     103: invokevirtual #106                // Method net/minecraftforge/registries/DeferredRegister.register:(Lnet/minecraftforge/eventbus/api/IEventBus;)V
+     106: invokestatic  #138                // Method com/p1nero/tcrcore/gamerule/TCRGameRules.register:()V
+     109: aload_1
+     110: getstatic     #142                // Field net/minecraftforge/fml/config/ModConfig$Type.CLIENT:Lnet/minecraftforge/fml/config/ModConfig$Type;
+     113: getstatic     #148                // Field com/p1nero/tcrcore/TCRClientConfig.SPEC:Lnet/minecraftforge/common/ForgeConfigSpec;
+     116: invokevirtual #152                // Method net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext.registerConfig:(Lnet/minecraftforge/fml/config/ModConfig$Type;Lnet/minecraftforge/fml/config/IConfigSpec;)V
+     119: getstatic     #158                // Field net/minecraftforge/fml/loading/FMLEnvironment.dist:Lnet/minecraftforge/api/distmarker/Dist;
+     122: invokevirtual #164                // Method net/minecraftforge/api/distmarker/Dist.isDedicatedServer:()Z
+     125: ifeq          149
+     128: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+     131: ldc           #172                // String aaa_particles
+     133: invokevirtual #176                // Method net/minecraftforge/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+     136: ifeq          149
+     139: new           #178                // class java/lang/IllegalStateException
+     142: dup
+     143: ldc           #180                // String [The Casket of Reveries]: AAA Particles mod is detected on server side. Please remove it or use our official server pack on curseforge additional file otherwise it will crash.
+     145: invokespecial #183                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+     148: athrow
+     149: return
+
+  private void commonSetup(net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent);
+    Code:
+       0: aload_1
+       1: invokedynamic #198,  0            // InvokeDynamic #2:run:()Ljava/lang/Runnable;
+       6: invokevirtual #204                // Method net/minecraftforge/fml/event/lifecycle/FMLCommonSetupEvent.enqueueWork:(Ljava/lang/Runnable;)Ljava/util/concurrent/CompletableFuture;
+       9: pop
+      10: return
+
+  public static boolean hasCoolMod();
+    Code:
+       0: getstatic     #209                // Field coolMod:Z
+       3: ireturn
+
+  private void addPackFindersEvent(net.minecraftforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #215                // Method net/minecraftforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #221                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     83
+      10: ldc           #223                // String i18n
+      12: astore_2
+      13: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+      16: ldc           #29                 // String tcrcore
+      18: invokevirtual #227                // Method net/minecraftforge/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/minecraftforge/forgespi/language/IModFileInfo;
+      21: invokeinterface #233,  1          // InterfaceMethod net/minecraftforge/forgespi/language/IModFileInfo.getFile:()Lnet/minecraftforge/forgespi/locating/IModFile;
+      26: iconst_1
+      27: anewarray     #235                // class java/lang/String
+      30: dup
+      31: iconst_0
+      32: aload_2
+      33: invokedynamic #247,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      38: aastore
+      39: invokeinterface #253,  2          // InterfaceMethod net/minecraftforge/forgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      44: astore_3
+      45: aload_2
+      46: ldc           #255                // String i18n_pack
+      48: invokestatic  #259                // Method getInfo:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      51: iconst_1
+      52: aload_3
+      53: invokedynamic #270,  0            // InvokeDynamic #4:m_247679_:(Ljava/nio/file/Path;)Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;
+      58: getstatic     #221                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+      61: getstatic     #274                // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      64: getstatic     #280                // Field net/minecraft/server/packs/repository/PackSource.f_10528_:Lnet/minecraft/server/packs/repository/PackSource;
+      67: invokestatic  #284                // Method net/minecraft/server/packs/repository/Pack.m_245429_:(Ljava/lang/String;Lnet/minecraft/network/chat/Component;ZLnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/repository/Pack$Position;Lnet/minecraft/server/packs/repository/PackSource;)Lnet/minecraft/server/packs/repository/Pack;
+      70: astore        4
+      72: aload_1
+      73: aload         4
+      75: invokedynamic #294,  0            // InvokeDynamic #5:m_7686_:(Lnet/minecraft/server/packs/repository/Pack;)Lnet/minecraft/server/packs/repository/RepositorySource;
+      80: invokevirtual #298                // Method net/minecraftforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+      83: aload_1
+      84: invokevirtual #215                // Method net/minecraftforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+      87: getstatic     #221                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+      90: if_acmpne     168
+      93: ldc_w         #300                // String zh_cn_patch
+      96: astore_2
+      97: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+     100: ldc           #29                 // String tcrcore
+     102: invokevirtual #227                // Method net/minecraftforge/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/minecraftforge/forgespi/language/IModFileInfo;
+     105: invokeinterface #233,  1          // InterfaceMethod net/minecraftforge/forgespi/language/IModFileInfo.getFile:()Lnet/minecraftforge/forgespi/locating/IModFile;
+     110: iconst_1
+     111: anewarray     #235                // class java/lang/String
+     114: dup
+     115: iconst_0
+     116: aload_2
+     117: invokedynamic #247,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     122: aastore
+     123: invokeinterface #253,  2          // InterfaceMethod net/minecraftforge/forgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+     128: astore_3
+     129: aload_2
+     130: ldc_w         #302                // String Chinese Patch
+     133: invokestatic  #307                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     136: iconst_1
+     137: aload_3
+     138: invokedynamic #312,  0            // InvokeDynamic #6:m_247679_:(Ljava/nio/file/Path;)Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;
+     143: getstatic     #221                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+     146: getstatic     #274                // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+     149: getstatic     #280                // Field net/minecraft/server/packs/repository/PackSource.f_10528_:Lnet/minecraft/server/packs/repository/PackSource;
+     152: invokestatic  #284                // Method net/minecraft/server/packs/repository/Pack.m_245429_:(Ljava/lang/String;Lnet/minecraft/network/chat/Component;ZLnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/repository/Pack$Position;Lnet/minecraft/server/packs/repository/PackSource;)Lnet/minecraft/server/packs/repository/Pack;
+     155: astore        4
+     157: aload_1
+     158: aload         4
+     160: invokedynamic #317,  0            // InvokeDynamic #7:m_7686_:(Lnet/minecraft/server/packs/repository/Pack;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     165: invokevirtual #298                // Method net/minecraftforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     168: aload_1
+     169: invokevirtual #215                // Method net/minecraftforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+     172: getstatic     #221                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+     175: if_acmpne     253
+     178: ldc_w         #319                // String tcr_assets
+     181: astore_2
+     182: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+     185: ldc           #29                 // String tcrcore
+     187: invokevirtual #227                // Method net/minecraftforge/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/minecraftforge/forgespi/language/IModFileInfo;
+     190: invokeinterface #233,  1          // InterfaceMethod net/minecraftforge/forgespi/language/IModFileInfo.getFile:()Lnet/minecraftforge/forgespi/locating/IModFile;
+     195: iconst_1
+     196: anewarray     #235                // class java/lang/String
+     199: dup
+     200: iconst_0
+     201: aload_2
+     202: invokedynamic #247,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     207: aastore
+     208: invokeinterface #253,  2          // InterfaceMethod net/minecraftforge/forgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+     213: astore_3
+     214: aload_2
+     215: ldc_w         #321                // String The Casket of Reveries Assets - Override
+     218: invokestatic  #307                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     221: iconst_1
+     222: aload_3
+     223: invokedynamic #326,  0            // InvokeDynamic #8:m_247679_:(Ljava/nio/file/Path;)Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;
+     228: getstatic     #221                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+     231: getstatic     #274                // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+     234: getstatic     #280                // Field net/minecraft/server/packs/repository/PackSource.f_10528_:Lnet/minecraft/server/packs/repository/PackSource;
+     237: invokestatic  #284                // Method net/minecraft/server/packs/repository/Pack.m_245429_:(Ljava/lang/String;Lnet/minecraft/network/chat/Component;ZLnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/repository/Pack$Position;Lnet/minecraft/server/packs/repository/PackSource;)Lnet/minecraft/server/packs/repository/Pack;
+     240: astore        4
+     242: aload_1
+     243: aload         4
+     245: invokedynamic #331,  0            // InvokeDynamic #9:m_7686_:(Lnet/minecraft/server/packs/repository/Pack;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     250: invokevirtual #298                // Method net/minecraftforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     253: aload_1
+     254: invokevirtual #215                // Method net/minecraftforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+     257: getstatic     #221                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+     260: if_acmpne     338
+     263: ldc_w         #333                // String custom_models
+     266: astore_2
+     267: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+     270: ldc           #29                 // String tcrcore
+     272: invokevirtual #227                // Method net/minecraftforge/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/minecraftforge/forgespi/language/IModFileInfo;
+     275: invokeinterface #233,  1          // InterfaceMethod net/minecraftforge/forgespi/language/IModFileInfo.getFile:()Lnet/minecraftforge/forgespi/locating/IModFile;
+     280: iconst_1
+     281: anewarray     #235                // class java/lang/String
+     284: dup
+     285: iconst_0
+     286: aload_2
+     287: invokedynamic #247,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     292: aastore
+     293: invokeinterface #253,  2          // InterfaceMethod net/minecraftforge/forgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+     298: astore_3
+     299: aload_2
+     300: ldc_w         #335                // String more_beautiful_models_and_trail
+     303: invokestatic  #259                // Method getInfo:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     306: iconst_0
+     307: aload_3
+     308: invokedynamic #340,  0            // InvokeDynamic #10:m_247679_:(Ljava/nio/file/Path;)Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;
+     313: getstatic     #221                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+     316: getstatic     #274                // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+     319: getstatic     #280                // Field net/minecraft/server/packs/repository/PackSource.f_10528_:Lnet/minecraft/server/packs/repository/PackSource;
+     322: invokestatic  #284                // Method net/minecraft/server/packs/repository/Pack.m_245429_:(Ljava/lang/String;Lnet/minecraft/network/chat/Component;ZLnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/repository/Pack$Position;Lnet/minecraft/server/packs/repository/PackSource;)Lnet/minecraft/server/packs/repository/Pack;
+     325: astore        4
+     327: aload_1
+     328: aload         4
+     330: invokedynamic #345,  0            // InvokeDynamic #11:m_7686_:(Lnet/minecraft/server/packs/repository/Pack;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     335: invokevirtual #298                // Method net/minecraftforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     338: aload_1
+     339: invokevirtual #215                // Method net/minecraftforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+     342: getstatic     #348                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+     345: if_acmpne     435
+     348: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+     351: ldc_w         #350                // String idas
+     354: invokevirtual #176                // Method net/minecraftforge/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+     357: ifeq          435
+     360: ldc_w         #352                // String idas_modify
+     363: astore_2
+     364: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+     367: ldc           #29                 // String tcrcore
+     369: invokevirtual #227                // Method net/minecraftforge/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/minecraftforge/forgespi/language/IModFileInfo;
+     372: invokeinterface #233,  1          // InterfaceMethod net/minecraftforge/forgespi/language/IModFileInfo.getFile:()Lnet/minecraftforge/forgespi/locating/IModFile;
+     377: iconst_1
+     378: anewarray     #235                // class java/lang/String
+     381: dup
+     382: iconst_0
+     383: aload_2
+     384: invokedynamic #247,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     389: aastore
+     390: invokeinterface #253,  2          // InterfaceMethod net/minecraftforge/forgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+     395: astore_3
+     396: aload_2
+     397: ldc_w         #354                // String The Casket of Reveries Data - IDAS Override
+     400: invokestatic  #307                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     403: iconst_1
+     404: aload_3
+     405: invokedynamic #359,  0            // InvokeDynamic #12:m_247679_:(Ljava/nio/file/Path;)Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;
+     410: getstatic     #348                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+     413: getstatic     #274                // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+     416: getstatic     #362                // Field net/minecraft/server/packs/repository/PackSource.f_10529_:Lnet/minecraft/server/packs/repository/PackSource;
+     419: invokestatic  #284                // Method net/minecraft/server/packs/repository/Pack.m_245429_:(Ljava/lang/String;Lnet/minecraft/network/chat/Component;ZLnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/repository/Pack$Position;Lnet/minecraft/server/packs/repository/PackSource;)Lnet/minecraft/server/packs/repository/Pack;
+     422: astore        4
+     424: aload_1
+     425: aload         4
+     427: invokedynamic #367,  0            // InvokeDynamic #13:m_7686_:(Lnet/minecraft/server/packs/repository/Pack;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     432: invokevirtual #298                // Method net/minecraftforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     435: aload_1
+     436: invokevirtual #215                // Method net/minecraftforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+     439: getstatic     #348                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+     442: if_acmpne     520
+     445: ldc_w         #369                // String tcr_data
+     448: astore_2
+     449: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+     452: ldc           #29                 // String tcrcore
+     454: invokevirtual #227                // Method net/minecraftforge/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/minecraftforge/forgespi/language/IModFileInfo;
+     457: invokeinterface #233,  1          // InterfaceMethod net/minecraftforge/forgespi/language/IModFileInfo.getFile:()Lnet/minecraftforge/forgespi/locating/IModFile;
+     462: iconst_1
+     463: anewarray     #235                // class java/lang/String
+     466: dup
+     467: iconst_0
+     468: aload_2
+     469: invokedynamic #247,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     474: aastore
+     475: invokeinterface #253,  2          // InterfaceMethod net/minecraftforge/forgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+     480: astore_3
+     481: aload_2
+     482: ldc_w         #371                // String The Casket of Reveries Data - Override
+     485: invokestatic  #307                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     488: iconst_1
+     489: aload_3
+     490: invokedynamic #376,  0            // InvokeDynamic #14:m_247679_:(Ljava/nio/file/Path;)Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;
+     495: getstatic     #348                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+     498: getstatic     #274                // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+     501: getstatic     #362                // Field net/minecraft/server/packs/repository/PackSource.f_10529_:Lnet/minecraft/server/packs/repository/PackSource;
+     504: invokestatic  #284                // Method net/minecraft/server/packs/repository/Pack.m_245429_:(Ljava/lang/String;Lnet/minecraft/network/chat/Component;ZLnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/repository/Pack$Position;Lnet/minecraft/server/packs/repository/PackSource;)Lnet/minecraft/server/packs/repository/Pack;
+     507: astore        4
+     509: aload_1
+     510: aload         4
+     512: invokedynamic #381,  0            // InvokeDynamic #15:m_7686_:(Lnet/minecraft/server/packs/repository/Pack;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     517: invokevirtual #298                // Method net/minecraftforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     520: aload_1
+     521: invokevirtual #215                // Method net/minecraftforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+     524: getstatic     #348                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+     527: if_acmpne     605
+     530: ldc_w         #383                // String structure_set_control
+     533: astore_2
+     534: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+     537: ldc           #29                 // String tcrcore
+     539: invokevirtual #227                // Method net/minecraftforge/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/minecraftforge/forgespi/language/IModFileInfo;
+     542: invokeinterface #233,  1          // InterfaceMethod net/minecraftforge/forgespi/language/IModFileInfo.getFile:()Lnet/minecraftforge/forgespi/locating/IModFile;
+     547: iconst_1
+     548: anewarray     #235                // class java/lang/String
+     551: dup
+     552: iconst_0
+     553: aload_2
+     554: invokedynamic #247,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     559: aastore
+     560: invokeinterface #253,  2          // InterfaceMethod net/minecraftforge/forgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+     565: astore_3
+     566: aload_2
+     567: ldc_w         #385                // String The Casket of Reveries Structure Sets - Override
+     570: invokestatic  #307                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     573: iconst_1
+     574: aload_3
+     575: invokedynamic #390,  0            // InvokeDynamic #16:m_247679_:(Ljava/nio/file/Path;)Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;
+     580: getstatic     #348                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+     583: getstatic     #274                // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+     586: getstatic     #362                // Field net/minecraft/server/packs/repository/PackSource.f_10529_:Lnet/minecraft/server/packs/repository/PackSource;
+     589: invokestatic  #284                // Method net/minecraft/server/packs/repository/Pack.m_245429_:(Ljava/lang/String;Lnet/minecraft/network/chat/Component;ZLnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/repository/Pack$Position;Lnet/minecraft/server/packs/repository/PackSource;)Lnet/minecraft/server/packs/repository/Pack;
+     592: astore        4
+     594: aload_1
+     595: aload         4
+     597: invokedynamic #395,  0            // InvokeDynamic #17:m_7686_:(Lnet/minecraft/server/packs/repository/Pack;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     602: invokevirtual #298                // Method net/minecraftforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     605: return
+
+  public static boolean isWorldEditLoad();
+    Code:
+       0: getstatic     #404                // Field worldEditLoaded:Z
+       3: ireturn
+
+  public static boolean isXaeroMapLoaded();
+    Code:
+       0: getstatic     #407                // Field xaeroMapLoaded:Z
+       3: ireturn
+
+  public static boolean isJourneyMapLoaded();
+    Code:
+       0: getstatic     #410                // Field journeyMapLoaded:Z
+       3: ireturn
+
+  public static boolean isEpicParCoolLoaded();
+    Code:
+       0: getstatic     #413                // Field epicParCoolLoaded:Z
+       3: ireturn
+
+  public static net.minecraft.network.chat.MutableComponent getInfo(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokedynamic #416,  0            // InvokeDynamic #18:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: invokestatic  #419                // InterfaceMethod net/minecraft/network/chat/Component.m_237115_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       9: areturn
+
+  public static java.lang.String getInfoKey(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokedynamic #416,  0            // InvokeDynamic #18:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: areturn
+
+  public static net.minecraft.network.chat.MutableComponent getInfo(java.lang.String, java.lang.Object...);
+    Code:
+       0: aload_0
+       1: invokedynamic #416,  0            // InvokeDynamic #18:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: aload_1
+       7: invokestatic  #425                // InterfaceMethod net/minecraft/network/chat/Component.m_237110_:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      10: areturn
+
+  public static net.minecraft.resources.ResourceLocation prefix(java.lang.String);
+    Code:
+       0: ldc           #29                 // String tcrcore
+       2: aload_0
+       3: getstatic     #435                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+       6: invokevirtual #439                // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+       9: invokestatic  #445                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      12: areturn
+
+  private static void lambda$addPackFindersEvent$15(net.minecraft.server.packs.repository.Pack, java.util.function.Consumer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #449,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+       7: return
+
+  private static net.minecraft.server.packs.PackResources lambda$addPackFindersEvent$14(java.nio.file.Path, java.lang.String);
+    Code:
+       0: new           #453                // class net/minecraft/server/packs/PathPackResources
+       3: dup
+       4: aload_1
+       5: aload_0
+       6: iconst_0
+       7: invokespecial #456                // Method net/minecraft/server/packs/PathPackResources."<init>":(Ljava/lang/String;Ljava/nio/file/Path;Z)V
+      10: areturn
+
+  private static void lambda$addPackFindersEvent$13(net.minecraft.server.packs.repository.Pack, java.util.function.Consumer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #449,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+       7: return
+
+  private static net.minecraft.server.packs.PackResources lambda$addPackFindersEvent$12(java.nio.file.Path, java.lang.String);
+    Code:
+       0: new           #453                // class net/minecraft/server/packs/PathPackResources
+       3: dup
+       4: aload_1
+       5: aload_0
+       6: iconst_0
+       7: invokespecial #456                // Method net/minecraft/server/packs/PathPackResources."<init>":(Ljava/lang/String;Ljava/nio/file/Path;Z)V
+      10: areturn
+
+  private static void lambda$addPackFindersEvent$11(net.minecraft.server.packs.repository.Pack, java.util.function.Consumer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #449,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+       7: return
+
+  private static net.minecraft.server.packs.PackResources lambda$addPackFindersEvent$10(java.nio.file.Path, java.lang.String);
+    Code:
+       0: new           #453                // class net/minecraft/server/packs/PathPackResources
+       3: dup
+       4: aload_1
+       5: aload_0
+       6: iconst_0
+       7: invokespecial #456                // Method net/minecraft/server/packs/PathPackResources."<init>":(Ljava/lang/String;Ljava/nio/file/Path;Z)V
+      10: areturn
+
+  private static void lambda$addPackFindersEvent$9(net.minecraft.server.packs.repository.Pack, java.util.function.Consumer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #449,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+       7: return
+
+  private static net.minecraft.server.packs.PackResources lambda$addPackFindersEvent$8(java.nio.file.Path, java.lang.String);
+    Code:
+       0: new           #453                // class net/minecraft/server/packs/PathPackResources
+       3: dup
+       4: aload_1
+       5: aload_0
+       6: iconst_0
+       7: invokespecial #456                // Method net/minecraft/server/packs/PathPackResources."<init>":(Ljava/lang/String;Ljava/nio/file/Path;Z)V
+      10: areturn
+
+  private static void lambda$addPackFindersEvent$7(net.minecraft.server.packs.repository.Pack, java.util.function.Consumer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #449,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+       7: return
+
+  private static net.minecraft.server.packs.PackResources lambda$addPackFindersEvent$6(java.nio.file.Path, java.lang.String);
+    Code:
+       0: new           #453                // class net/minecraft/server/packs/PathPackResources
+       3: dup
+       4: aload_1
+       5: aload_0
+       6: iconst_0
+       7: invokespecial #456                // Method net/minecraft/server/packs/PathPackResources."<init>":(Ljava/lang/String;Ljava/nio/file/Path;Z)V
+      10: areturn
+
+  private static void lambda$addPackFindersEvent$5(net.minecraft.server.packs.repository.Pack, java.util.function.Consumer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #449,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+       7: return
+
+  private static net.minecraft.server.packs.PackResources lambda$addPackFindersEvent$4(java.nio.file.Path, java.lang.String);
+    Code:
+       0: new           #453                // class net/minecraft/server/packs/PathPackResources
+       3: dup
+       4: aload_1
+       5: aload_0
+       6: iconst_0
+       7: invokespecial #456                // Method net/minecraft/server/packs/PathPackResources."<init>":(Ljava/lang/String;Ljava/nio/file/Path;Z)V
+      10: areturn
+
+  private static void lambda$addPackFindersEvent$3(net.minecraft.server.packs.repository.Pack, java.util.function.Consumer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #449,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+       7: return
+
+  private static net.minecraft.server.packs.PackResources lambda$addPackFindersEvent$2(java.nio.file.Path, java.lang.String);
+    Code:
+       0: new           #453                // class net/minecraft/server/packs/PathPackResources
+       3: dup
+       4: aload_1
+       5: aload_0
+       6: iconst_0
+       7: invokespecial #456                // Method net/minecraft/server/packs/PathPackResources."<init>":(Ljava/lang/String;Ljava/nio/file/Path;Z)V
+      10: areturn
+
+  private static void lambda$commonSetup$1();
+    Code:
+       0: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+       3: ldc_w         #459                // String worldedit
+       6: invokevirtual #176                // Method net/minecraftforge/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+       9: putstatic     #404                // Field worldEditLoaded:Z
+      12: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+      15: ldc_w         #461                // String xaerominimap
+      18: invokevirtual #176                // Method net/minecraftforge/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      21: putstatic     #407                // Field xaeroMapLoaded:Z
+      24: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+      27: ldc_w         #463                // String journeymap
+      30: invokevirtual #176                // Method net/minecraftforge/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      33: putstatic     #410                // Field journeyMapLoaded:Z
+      36: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+      39: ldc_w         #465                // String epicparcool
+      42: invokevirtual #176                // Method net/minecraftforge/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      45: putstatic     #413                // Field epicParCoolLoaded:Z
+      48: invokestatic  #468                // Method com/p1nero/tcrcore/network/TCRPacketHandler.register:()V
+      51: invokestatic  #473                // Method com/p1nero/tcrcore/capability/TCRQuestManager.init:()V
+      54: ldc_w         #475                // String apotheosis
+      57: invokestatic  #481                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      60: astore_0
+      61: aload_0
+      62: invokedynamic #489,  0            // InvokeDynamic #19:accept:()Ljava/util/function/Consumer;
+      67: invokeinterface #492,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      72: getstatic     #498                // Field com/p1nero/tcrcore/events/PlayerEventListeners.illegalItems:Ljava/util/Set;
+      75: getstatic     #504                // Field net/genzyuro/uniqueaccessories/registry/UAItems.STARVED_WOLF_SKULL:Lnet/minecraftforge/registries/RegistryObject;
+      78: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      81: checkcast     #511                // class net/minecraft/world/item/Item
+      84: invokeinterface #517,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      89: pop
+      90: getstatic     #498                // Field com/p1nero/tcrcore/events/PlayerEventListeners.illegalItems:Ljava/util/Set;
+      93: getstatic     #523                // Field artifacts/registry/ModItems.VAMPIRIC_GLOVE:Lartifacts/registry/RegistrySupplier;
+      96: invokevirtual #526                // Method artifacts/registry/RegistrySupplier.get:()Ljava/lang/Object;
+      99: checkcast     #511                // class net/minecraft/world/item/Item
+     102: invokeinterface #517,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     107: pop
+     108: getstatic     #498                // Field com/p1nero/tcrcore/events/PlayerEventListeners.illegalItems:Ljava/util/Set;
+     111: getstatic     #529                // Field net/genzyuro/uniqueaccessories/registry/UAItems.BURNING_SOUL:Lnet/minecraftforge/registries/RegistryObject;
+     114: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     117: checkcast     #511                // class net/minecraft/world/item/Item
+     120: invokeinterface #517,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     125: pop
+     126: getstatic     #498                // Field com/p1nero/tcrcore/events/PlayerEventListeners.illegalItems:Ljava/util/Set;
+     129: getstatic     #532                // Field artifacts/registry/ModItems.SCARF_OF_INVISIBILITY:Lartifacts/registry/RegistrySupplier;
+     132: invokevirtual #526                // Method artifacts/registry/RegistrySupplier.get:()Ljava/lang/Object;
+     135: checkcast     #511                // class net/minecraft/world/item/Item
+     138: invokeinterface #517,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     143: pop
+     144: getstatic     #498                // Field com/p1nero/tcrcore/events/PlayerEventListeners.illegalItems:Ljava/util/Set;
+     147: getstatic     #535                // Field artifacts/registry/ModItems.CROSS_NECKLACE:Lartifacts/registry/RegistrySupplier;
+     150: invokevirtual #526                // Method artifacts/registry/RegistrySupplier.get:()Ljava/lang/Object;
+     153: checkcast     #511                // class net/minecraft/world/item/Item
+     156: invokeinterface #517,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     161: pop
+     162: getstatic     #498                // Field com/p1nero/tcrcore/events/PlayerEventListeners.illegalItems:Ljava/util/Set;
+     165: getstatic     #540                // Field com/wintercogs/beyonddimensions/common/init/BDItems.NET_FEEDER_ITEM:Lnet/minecraftforge/registries/RegistryObject;
+     168: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     171: checkcast     #511                // class net/minecraft/world/item/Item
+     174: invokeinterface #517,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     179: pop
+     180: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+     183: ldc_w         #542                // String create
+     186: invokevirtual #176                // Method net/minecraftforge/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+     189: ifeq          224
+     192: getstatic     #548                // Field net/minecraftforge/registries/ForgeRegistries.ITEMS:Lnet/minecraftforge/registries/IForgeRegistry;
+     195: ldc_w         #550                // String create:crafting_blueprint
+     198: invokestatic  #553                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     201: invokeinterface #559,  2          // InterfaceMethod net/minecraftforge/registries/IForgeRegistry.getValue:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+     206: checkcast     #511                // class net/minecraft/world/item/Item
+     209: astore_1
+     210: aload_1
+     211: ifnull        224
+     214: getstatic     #498                // Field com/p1nero/tcrcore/events/PlayerEventListeners.illegalItems:Ljava/util/Set;
+     217: aload_1
+     218: invokeinterface #517,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     223: pop
+     224: getstatic     #564                // Field com/p1nero/tcrcore/events/LivingEntityEventListeners.illegalEntityTypes:Ljava/util/Set;
+     227: bipush        11
+     229: anewarray     #566                // class net/minecraft/world/entity/EntityType
+     232: dup
+     233: iconst_0
+     234: getstatic     #571                // Field com/brass_amber/ba_bt/init/BTEntityType.BT_CULTIST:Lnet/minecraftforge/registries/RegistryObject;
+     237: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     240: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     243: aastore
+     244: dup
+     245: iconst_1
+     246: getstatic     #576                // Field com/aetherteam/aether/entity/AetherEntityTypes.FIRE_MINION:Lnet/minecraftforge/registries/RegistryObject;
+     249: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     252: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     255: aastore
+     256: dup
+     257: iconst_2
+     258: getstatic     #581                // Field com/bobmowzie/mowziesmobs/server/entity/EntityHandler.NAGA:Lnet/minecraftforge/registries/RegistryObject;
+     261: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     264: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     267: aastore
+     268: dup
+     269: iconst_3
+     270: getstatic     #586                // Field com/github/L_Ender/cataclysm/init/ModEntities.URCHINKIN:Lnet/minecraftforge/registries/RegistryObject;
+     273: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     276: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     279: aastore
+     280: dup
+     281: iconst_4
+     282: getstatic     #589                // Field com/github/L_Ender/cataclysm/init/ModEntities.KOBOLETON:Lnet/minecraftforge/registries/RegistryObject;
+     285: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     288: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     291: aastore
+     292: dup
+     293: iconst_5
+     294: getstatic     #592                // Field com/github/L_Ender/cataclysm/init/ModEntities.ELITE_DRAUGR:Lnet/minecraftforge/registries/RegistryObject;
+     297: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     300: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     303: aastore
+     304: dup
+     305: bipush        6
+     307: getstatic     #595                // Field com/github/L_Ender/cataclysm/init/ModEntities.ROYAL_DRAUGR:Lnet/minecraftforge/registries/RegistryObject;
+     310: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     313: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     316: aastore
+     317: dup
+     318: bipush        7
+     320: getstatic     #598                // Field com/github/L_Ender/cataclysm/init/ModEntities.DRAUGR:Lnet/minecraftforge/registries/RegistryObject;
+     323: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     326: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     329: aastore
+     330: dup
+     331: bipush        8
+     333: getstatic     #601                // Field com/github/L_Ender/cataclysm/init/ModEntities.LIONFISH:Lnet/minecraftforge/registries/RegistryObject;
+     336: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     339: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     342: aastore
+     343: dup
+     344: bipush        9
+     346: getstatic     #604                // Field com/github/L_Ender/cataclysm/init/ModEntities.DEEPLING_BRUTE:Lnet/minecraftforge/registries/RegistryObject;
+     349: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     352: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     355: aastore
+     356: dup
+     357: bipush        10
+     359: getstatic     #607                // Field com/github/L_Ender/cataclysm/init/ModEntities.DEEPLING:Lnet/minecraftforge/registries/RegistryObject;
+     362: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     365: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     368: aastore
+     369: invokestatic  #610                // InterfaceMethod java/util/List.of:([Ljava/lang/Object;)Ljava/util/List;
+     372: invokeinterface #614,  2          // InterfaceMethod java/util/Set.addAll:(Ljava/util/Collection;)Z
+     377: pop
+     378: invokestatic  #619                // Method com/p1nero/tcrcore/utils/ItemUtils.initAdditionalInfoItems:()V
+     381: ldc_w         #621                // String pec_weapon_lock
+     384: iconst_2
+     385: anewarray     #4                  // class java/lang/Object
+     388: dup
+     389: iconst_0
+     390: getstatic     #627                // Field com/p1nero/tcrcore/utils/WorldUtils.SAMSARA_NAME:Lnet/minecraft/network/chat/MutableComponent;
+     393: aastore
+     394: dup
+     395: iconst_1
+     396: getstatic     #632                // Field com/p1nero/tcr_bosses/entity/TCRBossEntities.SCYLLA_HUMANOID:Lnet/minecraftforge/registries/RegistryObject;
+     399: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     402: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     405: invokevirtual #636                // Method net/minecraft/world/entity/EntityType.m_20676_:()Lnet/minecraft/network/chat/Component;
+     408: invokeinterface #640,  1          // InterfaceMethod net/minecraft/network/chat/Component.m_6881_:()Lnet/minecraft/network/chat/MutableComponent;
+     413: getstatic     #646                // Field net/minecraft/ChatFormatting.AQUA:Lnet/minecraft/ChatFormatting;
+     416: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     419: aastore
+     420: invokestatic  #654                // Method getInfo:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     423: getstatic     #657                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     426: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     429: putstatic     #663                // Field com/p1nero/p1nero_ec/PEpicCataclysmMod.astrapeLock:Lnet/minecraft/network/chat/Component;
+     432: ldc_w         #621                // String pec_weapon_lock
+     435: iconst_2
+     436: anewarray     #4                  // class java/lang/Object
+     439: dup
+     440: iconst_0
+     441: getstatic     #627                // Field com/p1nero/tcrcore/utils/WorldUtils.SAMSARA_NAME:Lnet/minecraft/network/chat/MutableComponent;
+     444: aastore
+     445: dup
+     446: iconst_1
+     447: getstatic     #632                // Field com/p1nero/tcr_bosses/entity/TCRBossEntities.SCYLLA_HUMANOID:Lnet/minecraftforge/registries/RegistryObject;
+     450: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     453: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     456: invokevirtual #636                // Method net/minecraft/world/entity/EntityType.m_20676_:()Lnet/minecraft/network/chat/Component;
+     459: invokeinterface #640,  1          // InterfaceMethod net/minecraft/network/chat/Component.m_6881_:()Lnet/minecraft/network/chat/MutableComponent;
+     464: getstatic     #646                // Field net/minecraft/ChatFormatting.AQUA:Lnet/minecraft/ChatFormatting;
+     467: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     470: aastore
+     471: invokestatic  #654                // Method getInfo:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     474: getstatic     #657                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     477: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     480: putstatic     #666                // Field com/p1nero/p1nero_ec/PEpicCataclysmMod.ceraunusLock:Lnet/minecraft/network/chat/Component;
+     483: ldc_w         #621                // String pec_weapon_lock
+     486: iconst_2
+     487: anewarray     #4                  // class java/lang/Object
+     490: dup
+     491: iconst_0
+     492: getstatic     #627                // Field com/p1nero/tcrcore/utils/WorldUtils.SAMSARA_NAME:Lnet/minecraft/network/chat/MutableComponent;
+     495: aastore
+     496: dup
+     497: iconst_1
+     498: getstatic     #669                // Field com/p1nero/tcr_bosses/entity/TCRBossEntities.MALEDICTUS_HUMANOID:Lnet/minecraftforge/registries/RegistryObject;
+     501: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     504: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     507: invokevirtual #636                // Method net/minecraft/world/entity/EntityType.m_20676_:()Lnet/minecraft/network/chat/Component;
+     510: invokeinterface #640,  1          // InterfaceMethod net/minecraft/network/chat/Component.m_6881_:()Lnet/minecraft/network/chat/MutableComponent;
+     515: getstatic     #672                // Field net/minecraft/ChatFormatting.DARK_GREEN:Lnet/minecraft/ChatFormatting;
+     518: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     521: aastore
+     522: invokestatic  #654                // Method getInfo:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     525: getstatic     #657                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     528: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     531: putstatic     #675                // Field com/p1nero/p1nero_ec/PEpicCataclysmMod.dualAnnihilatorLock:Lnet/minecraft/network/chat/Component;
+     534: ldc_w         #621                // String pec_weapon_lock
+     537: iconst_2
+     538: anewarray     #4                  // class java/lang/Object
+     541: dup
+     542: iconst_0
+     543: getstatic     #627                // Field com/p1nero/tcrcore/utils/WorldUtils.SAMSARA_NAME:Lnet/minecraft/network/chat/MutableComponent;
+     546: aastore
+     547: dup
+     548: iconst_1
+     549: getstatic     #669                // Field com/p1nero/tcr_bosses/entity/TCRBossEntities.MALEDICTUS_HUMANOID:Lnet/minecraftforge/registries/RegistryObject;
+     552: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     555: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     558: invokevirtual #636                // Method net/minecraft/world/entity/EntityType.m_20676_:()Lnet/minecraft/network/chat/Component;
+     561: invokeinterface #640,  1          // InterfaceMethod net/minecraft/network/chat/Component.m_6881_:()Lnet/minecraft/network/chat/MutableComponent;
+     566: getstatic     #672                // Field net/minecraft/ChatFormatting.DARK_GREEN:Lnet/minecraft/ChatFormatting;
+     569: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     572: aastore
+     573: invokestatic  #654                // Method getInfo:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     576: getstatic     #657                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     579: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     582: putstatic     #678                // Field com/p1nero/p1nero_ec/PEpicCataclysmMod.soulRenderLock:Lnet/minecraft/network/chat/Component;
+     585: ldc_w         #621                // String pec_weapon_lock
+     588: iconst_2
+     589: anewarray     #4                  // class java/lang/Object
+     592: dup
+     593: iconst_0
+     594: getstatic     #627                // Field com/p1nero/tcrcore/utils/WorldUtils.SAMSARA_NAME:Lnet/minecraft/network/chat/MutableComponent;
+     597: aastore
+     598: dup
+     599: iconst_1
+     600: getstatic     #681                // Field com/p1nero/tcr_bosses/entity/TCRBossEntities.ENDER_GUARDIAN_HUMANOID:Lnet/minecraftforge/registries/RegistryObject;
+     603: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     606: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     609: invokevirtual #636                // Method net/minecraft/world/entity/EntityType.m_20676_:()Lnet/minecraft/network/chat/Component;
+     612: invokeinterface #640,  1          // InterfaceMethod net/minecraft/network/chat/Component.m_6881_:()Lnet/minecraft/network/chat/MutableComponent;
+     617: getstatic     #684                // Field net/minecraft/ChatFormatting.DARK_PURPLE:Lnet/minecraft/ChatFormatting;
+     620: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     623: aastore
+     624: invokestatic  #654                // Method getInfo:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     627: getstatic     #657                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     630: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     633: putstatic     #687                // Field com/p1nero/p1nero_ec/PEpicCataclysmMod.gauntletOfGuardLock:Lnet/minecraft/network/chat/Component;
+     636: ldc_w         #621                // String pec_weapon_lock
+     639: iconst_2
+     640: anewarray     #4                  // class java/lang/Object
+     643: dup
+     644: iconst_0
+     645: getstatic     #627                // Field com/p1nero/tcrcore/utils/WorldUtils.SAMSARA_NAME:Lnet/minecraft/network/chat/MutableComponent;
+     648: aastore
+     649: dup
+     650: iconst_1
+     651: getstatic     #690                // Field com/p1nero/tcr_bosses/entity/TCRBossEntities.NETHERITE_HUMANOID:Lnet/minecraftforge/registries/RegistryObject;
+     654: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     657: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     660: invokevirtual #636                // Method net/minecraft/world/entity/EntityType.m_20676_:()Lnet/minecraft/network/chat/Component;
+     663: invokeinterface #640,  1          // InterfaceMethod net/minecraft/network/chat/Component.m_6881_:()Lnet/minecraft/network/chat/MutableComponent;
+     668: getstatic     #693                // Field net/minecraft/ChatFormatting.DARK_RED:Lnet/minecraft/ChatFormatting;
+     671: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     674: aastore
+     675: invokestatic  #654                // Method getInfo:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     678: getstatic     #657                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     681: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     684: putstatic     #696                // Field com/p1nero/p1nero_ec/PEpicCataclysmMod.infernalForgeLock:Lnet/minecraft/network/chat/Component;
+     687: ldc_w         #621                // String pec_weapon_lock
+     690: iconst_2
+     691: anewarray     #4                  // class java/lang/Object
+     694: dup
+     695: iconst_0
+     696: getstatic     #627                // Field com/p1nero/tcrcore/utils/WorldUtils.SAMSARA_NAME:Lnet/minecraft/network/chat/MutableComponent;
+     699: aastore
+     700: dup
+     701: iconst_1
+     702: getstatic     #699                // Field com/p1nero/tcr_bosses/entity/TCRBossEntities.LEVIATHAN_HUMANOID:Lnet/minecraftforge/registries/RegistryObject;
+     705: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     708: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     711: invokevirtual #636                // Method net/minecraft/world/entity/EntityType.m_20676_:()Lnet/minecraft/network/chat/Component;
+     714: invokeinterface #640,  1          // InterfaceMethod net/minecraft/network/chat/Component.m_6881_:()Lnet/minecraft/network/chat/MutableComponent;
+     719: getstatic     #702                // Field net/minecraft/ChatFormatting.LIGHT_PURPLE:Lnet/minecraft/ChatFormatting;
+     722: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     725: aastore
+     726: invokestatic  #654                // Method getInfo:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     729: getstatic     #657                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     732: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     735: putstatic     #705                // Field com/p1nero/p1nero_ec/PEpicCataclysmMod.tidalClawLock:Lnet/minecraft/network/chat/Component;
+     738: ldc_w         #621                // String pec_weapon_lock
+     741: iconst_2
+     742: anewarray     #4                  // class java/lang/Object
+     745: dup
+     746: iconst_0
+     747: getstatic     #627                // Field com/p1nero/tcrcore/utils/WorldUtils.SAMSARA_NAME:Lnet/minecraft/network/chat/MutableComponent;
+     750: aastore
+     751: dup
+     752: iconst_1
+     753: getstatic     #708                // Field com/p1nero/tcr_bosses/entity/TCRBossEntities.ANCIENT_REMNANT_HUMANOID:Lnet/minecraftforge/registries/RegistryObject;
+     756: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     759: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     762: invokevirtual #636                // Method net/minecraft/world/entity/EntityType.m_20676_:()Lnet/minecraft/network/chat/Component;
+     765: invokeinterface #640,  1          // InterfaceMethod net/minecraft/network/chat/Component.m_6881_:()Lnet/minecraft/network/chat/MutableComponent;
+     770: getstatic     #711                // Field net/minecraft/ChatFormatting.YELLOW:Lnet/minecraft/ChatFormatting;
+     773: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     776: aastore
+     777: invokestatic  #654                // Method getInfo:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     780: getstatic     #657                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     783: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     786: putstatic     #714                // Field com/p1nero/p1nero_ec/PEpicCataclysmMod.wrathOfTheDesertLock:Lnet/minecraft/network/chat/Component;
+     789: ldc_w         #621                // String pec_weapon_lock
+     792: iconst_2
+     793: anewarray     #4                  // class java/lang/Object
+     796: dup
+     797: iconst_0
+     798: getstatic     #627                // Field com/p1nero/tcrcore/utils/WorldUtils.SAMSARA_NAME:Lnet/minecraft/network/chat/MutableComponent;
+     801: aastore
+     802: dup
+     803: iconst_1
+     804: getstatic     #717                // Field com/p1nero/tcr_bosses/entity/TCRBossEntities.IGNIS_HUMANOID:Lnet/minecraftforge/registries/RegistryObject;
+     807: invokevirtual #509                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     810: checkcast     #566                // class net/minecraft/world/entity/EntityType
+     813: invokevirtual #636                // Method net/minecraft/world/entity/EntityType.m_20676_:()Lnet/minecraft/network/chat/Component;
+     816: invokeinterface #640,  1          // InterfaceMethod net/minecraft/network/chat/Component.m_6881_:()Lnet/minecraft/network/chat/MutableComponent;
+     821: getstatic     #657                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     824: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     827: aastore
+     828: invokestatic  #654                // Method getInfo:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     831: getstatic     #657                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     834: invokevirtual #652                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     837: putstatic     #720                // Field com/p1nero/p1nero_ec/PEpicCataclysmMod.theIncineratorLock:Lnet/minecraft/network/chat/Component;
+     840: getstatic     #726                // Field dev/ftb/mods/ftbteams/api/event/TeamEvent.PLAYER_JOINED_PARTY:Ldev/architectury/event/Event;
+     843: invokedynamic #733,  0            // InvokeDynamic #20:accept:()Ljava/util/function/Consumer;
+     848: invokeinterface #737,  2          // InterfaceMethod dev/architectury/event/Event.register:(Ljava/lang/Object;)V
+     853: getstatic     #740                // Field dev/ftb/mods/ftbteams/api/event/TeamEvent.CREATED:Ldev/architectury/event/Event;
+     856: invokedynamic #747,  0            // InvokeDynamic #21:accept:()Ljava/util/function/Consumer;
+     861: invokeinterface #737,  2          // InterfaceMethod dev/architectury/event/Event.register:(Ljava/lang/Object;)V
+     866: return
+
+  private static void lambda$commonSetup$0(java.lang.String);
+    Code:
+       0: invokestatic  #170                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+       3: aload_0
+       4: invokevirtual #176                // Method net/minecraftforge/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+       7: ifeq          14
+      10: iconst_1
+      11: putstatic     #209                // Field coolMod:Z
+      14: return
+
+  static {};
+    Code:
+       0: invokestatic  #760                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #762                // Field LOGGER:Lorg/slf4j/Logger;
+       6: iconst_0
+       7: putstatic     #209                // Field coolMod:Z
+      10: return
+}

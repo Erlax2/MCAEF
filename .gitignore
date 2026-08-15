@@ -1,0 +1,23 @@
+# Gradle
+.gradle/
+build/
+
+# Local dependency JARs
+libs/*.jar
+
+# Local stable builds
+stable/
+
+# Minecraft / dev runtime
+run/
+logs/
+crash-reports/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS / misc
+.DS_Store
+*.log

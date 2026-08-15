@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="mcaefcompat"
+version="${mod_version}"
+displayName="MCA Epic Fight Compat"
+description='''
+Experimental compatibility bridge between MCA Reborn and Epic Fight.
+'''
+
+[[dependencies.mcaefcompat]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.4,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.mcaefcompat]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.20.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.mcaefcompat]]
+modId="epicfight"
+mandatory=true
+versionRange="[20.14.17,)"
+ordering="AFTER"
+side="CLIENT"

@@ -1,0 +1,901 @@
+========================================
+CONFIRMAR CLASES
+========================================
+forge/net/mca/entity/ai/relationship/VillagerDimensions.class
+forge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable.class
+forge/net/mca/client/model/CommonVillagerModel.class
+forge/net/mca/client/model/VillagerEntityBaseModelMCA.class
+quilt/net/mca/entity/ai/relationship/VillagerDimensions.class
+quilt/net/mca/entity/ai/relationship/VillagerDimensions$Mutable.class
+quilt/net/mca/client/model/CommonVillagerModel.class
+quilt/net/mca/client/model/VillagerEntityBaseModelMCA.class
+fabric/net/mca/entity/ai/relationship/VillagerDimensions.class
+fabric/net/mca/entity/ai/relationship/VillagerDimensions$Mutable.class
+fabric/net/mca/client/model/CommonVillagerModel.class
+fabric/net/mca/client/model/VillagerEntityBaseModelMCA.class
+
+========================================
+COMMON VILLAGER MODEL
+========================================
+Compiled from "CommonVillagerModel.java"
+public interface forge.net.mca.client.model.CommonVillagerModel<T extends net.minecraft.world.entity.LivingEntity> {
+  public abstract net.minecraft.client.model.geom.ModelPart getBreastPart();
+
+  public abstract net.minecraft.client.model.geom.ModelPart getBodyPart();
+
+  public abstract java.lang.Iterable<net.minecraft.client.model.geom.ModelPart> getCommonHeadParts();
+
+  public abstract java.lang.Iterable<net.minecraft.client.model.geom.ModelPart> getCommonBodyParts();
+
+  public abstract java.lang.Iterable<net.minecraft.client.model.geom.ModelPart> getBreastParts();
+
+  public abstract forge.net.mca.entity.ai.relationship.VillagerDimensions$Mutable getDimensions();
+
+  public abstract float getBreastSize();
+
+  public abstract void setBreastSize(float);
+
+  public default void renderCommon(com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, int, int, float, float, float, float);
+    Code:
+       0: aload_0
+       1: invokeinterface #42,  1           // InterfaceMethod getDimensions:()Lforge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable;
+       6: invokevirtual #45                 // Method forge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable.getHead:()F
+       9: fstore        9
+      11: aload_1
+      12: invokevirtual #51                 // Method com/mojang/blaze3d/vertex/PoseStack.m_85836_:()V
+      15: aload_1
+      16: fload         9
+      18: fload         9
+      20: fload         9
+      22: invokevirtual #55                 // Method com/mojang/blaze3d/vertex/PoseStack.m_85841_:(FFF)V
+      25: aload_0
+      26: invokeinterface #57,  1           // InterfaceMethod getCommonHeadParts:()Ljava/lang/Iterable;
+      31: aload_1
+      32: aload_2
+      33: iload_3
+      34: iload         4
+      36: fload         5
+      38: fload         6
+      40: fload         7
+      42: fload         8
+      44: invokedynamic #77,  0             // InvokeDynamic #0:accept:(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)Ljava/util/function/Consumer;
+      49: invokeinterface #83,  2           // InterfaceMethod java/lang/Iterable.forEach:(Ljava/util/function/Consumer;)V
+      54: aload_1
+      55: invokevirtual #86                 // Method com/mojang/blaze3d/vertex/PoseStack.m_85849_:()V
+      58: aload_0
+      59: invokeinterface #88,  1           // InterfaceMethod getCommonBodyParts:()Ljava/lang/Iterable;
+      64: aload_1
+      65: aload_2
+      66: iload_3
+      67: iload         4
+      69: fload         5
+      71: fload         6
+      73: fload         7
+      75: fload         8
+      77: invokedynamic #93,  0             // InvokeDynamic #1:accept:(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)Ljava/util/function/Consumer;
+      82: invokeinterface #83,  2           // InterfaceMethod java/lang/Iterable.forEach:(Ljava/util/function/Consumer;)V
+      87: aload_0
+      88: invokeinterface #95,  1           // InterfaceMethod getBreastPart:()Lnet/minecraft/client/model/geom/ModelPart;
+      93: getfield      #101                // Field net/minecraft/client/model/geom/ModelPart.f_104207_:Z
+      96: ifeq          228
+      99: aload_0
+     100: invokeinterface #103,  1          // InterfaceMethod getBodyPart:()Lnet/minecraft/client/model/geom/ModelPart;
+     105: getfield      #101                // Field net/minecraft/client/model/geom/ModelPart.f_104207_:Z
+     108: ifeq          228
+     111: aload_0
+     112: invokeinterface #105,  1          // InterfaceMethod getBreastSize:()F
+     117: aload_0
+     118: invokeinterface #42,  1           // InterfaceMethod getDimensions:()Lforge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable;
+     123: invokevirtual #108                // Method forge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable.getBreasts:()F
+     126: fmul
+     127: fstore        10
+     129: fload         10
+     131: fconst_0
+     132: fcmpl
+     133: ifle          228
+     136: aload_1
+     137: invokevirtual #51                 // Method com/mojang/blaze3d/vertex/PoseStack.m_85836_:()V
+     140: aload_1
+     141: fload         10
+     143: ldc           #109                // float 0.2f
+     145: fmul
+     146: ldc           #110                // float 1.05f
+     148: fadd
+     149: fload         10
+     151: ldc           #111                // float 0.75f
+     153: fmul
+     154: ldc           #111                // float 0.75f
+     156: fadd
+     157: fload         10
+     159: ldc           #112                // float 0.45f
+     161: fmul
+     162: ldc           #111                // float 0.75f
+     164: fadd
+     165: invokevirtual #55                 // Method com/mojang/blaze3d/vertex/PoseStack.m_85841_:(FFF)V
+     168: aload_0
+     169: invokeinterface #114,  1          // InterfaceMethod getBreastParts:()Ljava/lang/Iterable;
+     174: invokeinterface #118,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+     179: astore        11
+     181: aload         11
+     183: invokeinterface #124,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     188: ifeq          224
+     191: aload         11
+     193: invokeinterface #128,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     198: checkcast     #97                 // class net/minecraft/client/model/geom/ModelPart
+     201: astore        12
+     203: aload         12
+     205: aload_1
+     206: aload_2
+     207: iload_3
+     208: iload         4
+     210: fload         5
+     212: fload         6
+     214: fload         7
+     216: fload         8
+     218: invokevirtual #131                // Method net/minecraft/client/model/geom/ModelPart.m_104306_:(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V
+     221: goto          181
+     224: aload_1
+     225: invokevirtual #86                 // Method com/mojang/blaze3d/vertex/PoseStack.m_85849_:()V
+     228: return
+
+  public default void applyVillagerDimensions(forge.net.mca.entity.VillagerLike<?>, boolean);
+    Code:
+       0: aload_0
+       1: invokeinterface #42,  1           // InterfaceMethod getDimensions:()Lforge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable;
+       6: aload_1
+       7: invokeinterface #153,  1          // InterfaceMethod forge/net/mca/entity/VillagerLike.getVillagerDimensions:()Lforge/net/mca/entity/ai/relationship/VillagerDimensions;
+      12: invokevirtual #157                // Method forge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable.set:(Lforge/net/mca/entity/ai/relationship/VillagerDimensions;)V
+      15: aload_0
+      16: aload_1
+      17: invokeinterface #161,  1          // InterfaceMethod forge/net/mca/entity/VillagerLike.getGenetics:()Lforge/net/mca/entity/ai/Genetics;
+      22: invokevirtual #164                // Method forge/net/mca/entity/ai/Genetics.getBreastSize:()F
+      25: invokeinterface #166,  2          // InterfaceMethod setBreastSize:(F)V
+      30: aload_0
+      31: invokeinterface #95,  1           // InterfaceMethod getBreastPart:()Lnet/minecraft/client/model/geom/ModelPart;
+      36: aload_1
+      37: invokeinterface #161,  1          // InterfaceMethod forge/net/mca/entity/VillagerLike.getGenetics:()Lforge/net/mca/entity/ai/Genetics;
+      42: invokevirtual #170                // Method forge/net/mca/entity/ai/Genetics.getGender:()Lforge/net/mca/entity/ai/relationship/Gender;
+      45: getstatic     #176                // Field forge/net/mca/entity/ai/relationship/Gender.FEMALE:Lforge/net/mca/entity/ai/relationship/Gender;
+      48: if_acmpne     55
+      51: iconst_1
+      52: goto          56
+      55: iconst_0
+      56: putfield      #101                // Field net/minecraft/client/model/geom/ModelPart.f_104207_:Z
+      59: aload_0
+      60: invokeinterface #114,  1          // InterfaceMethod getBreastParts:()Ljava/lang/Iterable;
+      65: invokeinterface #118,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+      70: astore_3
+      71: aload_3
+      72: invokeinterface #124,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      77: ifeq          177
+      80: aload_3
+      81: invokeinterface #128,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      86: checkcast     #97                 // class net/minecraft/client/model/geom/ModelPart
+      89: astore        4
+      91: aload         4
+      93: ldc           #177                // float 0.9424779f
+      95: aload_0
+      96: invokeinterface #103,  1          // InterfaceMethod getBodyPart:()Lnet/minecraft/client/model/geom/ModelPart;
+     101: getfield      #180                // Field net/minecraft/client/model/geom/ModelPart.f_104203_:F
+     104: fadd
+     105: putfield      #180                // Field net/minecraft/client/model/geom/ModelPart.f_104203_:F
+     108: fconst_0
+     109: fstore        5
+     111: fconst_0
+     112: fstore        6
+     114: iload_2
+     115: ifeq          126
+     118: ldc           #181                // float 3.0f
+     120: fstore        5
+     122: ldc           #182                // float 1.5f
+     124: fstore        6
+     126: aload         4
+     128: ldc           #183                // float 0.25f
+     130: ldc2_w        #184                // double 5.0d
+     133: aload_0
+     134: invokeinterface #105,  1          // InterfaceMethod getBreastSize:()F
+     139: f2d
+     140: ldc2_w        #186                // double 0.5d
+     143: invokestatic  #193                // Method java/lang/Math.pow:(DD)D
+     146: ldc2_w        #194                // double 2.5d
+     149: dmul
+     150: dsub
+     151: fload         5
+     153: f2d
+     154: dadd
+     155: d2f
+     156: ldc           #196                // float -1.5f
+     158: aload_0
+     159: invokeinterface #105,  1          // InterfaceMethod getBreastSize:()F
+     164: ldc           #183                // float 0.25f
+     166: fmul
+     167: fadd
+     168: fload         6
+     170: fadd
+     171: invokevirtual #199                // Method net/minecraft/client/model/geom/ModelPart.m_104227_:(FFF)V
+     174: goto          71
+     177: return
+
+  public default void copyCommonAttributes(forge.net.mca.client.model.CommonVillagerModel<T>);
+    Code:
+       0: aload_1
+       1: invokeinterface #42,  1           // InterfaceMethod getDimensions:()Lforge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable;
+       6: aload_0
+       7: invokeinterface #42,  1           // InterfaceMethod getDimensions:()Lforge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable;
+      12: invokevirtual #157                // Method forge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable.set:(Lforge/net/mca/entity/ai/relationship/VillagerDimensions;)V
+      15: aload_1
+      16: aload_0
+      17: invokeinterface #105,  1          // InterfaceMethod getBreastSize:()F
+      22: invokeinterface #166,  2          // InterfaceMethod setBreastSize:(F)V
+      27: return
+
+  public static forge.net.mca.entity.VillagerLike<?> getVillager(net.minecraft.world.level.Level, java.util.UUID);
+    Code:
+       0: getstatic     #218                // Field forge/net/mca/MCAClient.fallbackVillager:Lforge/net/mca/entity/VillagerEntityMCA;
+       3: ifnonnull     27
+       6: getstatic     #224                // Field forge/net/mca/entity/EntitiesMCA.MALE_VILLAGER:Ldev/architectury/registry/registries/RegistrySupplier;
+       9: invokeinterface #229,  1          // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+      14: checkcast     #231                // class net/minecraft/world/entity/EntityType
+      17: aload_0
+      18: invokevirtual #235                // Method net/minecraft/world/entity/EntityType.m_20615_:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+      21: checkcast     #237                // class forge/net/mca/entity/VillagerEntityMCA
+      24: putstatic     #218                // Field forge/net/mca/MCAClient.fallbackVillager:Lforge/net/mca/entity/VillagerEntityMCA;
+      27: getstatic     #241                // Field forge/net/mca/MCAClient.playerData:Ljava/util/Map;
+      30: aload_1
+      31: getstatic     #218                // Field forge/net/mca/MCAClient.fallbackVillager:Lforge/net/mca/entity/VillagerEntityMCA;
+      34: invokeinterface #247,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      39: checkcast     #149                // class forge/net/mca/entity/VillagerLike
+      42: areturn
+
+  public static forge.net.mca.entity.VillagerLike<?> getVillager(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: instanceof    #149                // class forge/net/mca/entity/VillagerLike
+       4: ifeq          14
+       7: aload_0
+       8: checkcast     #149                // class forge/net/mca/entity/VillagerLike
+      11: astore_1
+      12: aload_1
+      13: areturn
+      14: aload_0
+      15: invokevirtual #257                // Method net/minecraft/world/entity/Entity.m_9236_:()Lnet/minecraft/world/level/Level;
+      18: aload_0
+      19: invokevirtual #261                // Method net/minecraft/world/entity/Entity.m_20148_:()Ljava/util/UUID;
+      22: invokestatic  #263                // InterfaceMethod getVillager:(Lnet/minecraft/world/level/Level;Ljava/util/UUID;)Lforge/net/mca/entity/VillagerLike;
+      25: areturn
+
+  private static void lambda$renderCommon$1(com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, int, int, float, float, float, float, net.minecraft.client.model.geom.ModelPart);
+    Code:
+       0: aload         8
+       2: aload_0
+       3: aload_1
+       4: iload_2
+       5: iload_3
+       6: fload         4
+       8: fload         5
+      10: fload         6
+      12: fload         7
+      14: invokevirtual #131                // Method net/minecraft/client/model/geom/ModelPart.m_104306_:(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V
+      17: return
+
+  private static void lambda$renderCommon$0(com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, int, int, float, float, float, float, net.minecraft.client.model.geom.ModelPart);
+    Code:
+       0: aload         8
+       2: aload_0
+       3: aload_1
+       4: iload_2
+       5: iload_3
+       6: fload         4
+       8: fload         5
+      10: fload         6
+      12: fload         7
+      14: invokevirtual #131                // Method net/minecraft/client/model/geom/ModelPart.m_104306_:(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V
+      17: return
+}
+
+========================================
+VILLAGER ENTITY BASE MODEL MCA
+========================================
+Compiled from "VillagerEntityBaseModelMCA.java"
+public class forge.net.mca.client.model.VillagerEntityBaseModelMCA<T extends net.minecraft.world.entity.LivingEntity & forge.net.mca.entity.VillagerLike<T>> extends net.minecraft.client.model.HumanoidModel<T> implements forge.net.mca.client.model.CommonVillagerModel<T> {
+  protected static final java.lang.String BREASTS;
+
+  public final net.minecraft.client.model.geom.ModelPart breasts;
+
+  final forge.net.mca.entity.ai.relationship.VillagerDimensions$Mutable dimensions;
+
+  float breastSize;
+
+  public forge.net.mca.client.model.VillagerEntityBaseModelMCA(net.minecraft.client.model.geom.ModelPart);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #30                 // Method net/minecraft/client/model/HumanoidModel."<init>":(Lnet/minecraft/client/model/geom/ModelPart;)V
+       5: aload_0
+       6: new           #10                 // class forge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable
+       9: dup
+      10: getstatic     #36                 // Field forge/net/mca/entity/ai/relationship/AgeState.ADULT:Lforge/net/mca/entity/ai/relationship/AgeState;
+      13: invokespecial #39                 // Method forge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable."<init>":(Lforge/net/mca/entity/ai/relationship/VillagerDimensions;)V
+      16: putfield      #41                 // Field dimensions:Lforge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable;
+      19: aload_0
+      20: aload_1
+      21: ldc           #20                 // String breasts
+      23: invokevirtual #47                 // Method net/minecraft/client/model/geom/ModelPart.m_171324_:(Ljava/lang/String;)Lnet/minecraft/client/model/geom/ModelPart;
+      26: putfield      #49                 // Field breasts:Lnet/minecraft/client/model/geom/ModelPart;
+      29: return
+
+  public static net.minecraft.client.model.geom.builders.MeshDefinition getModelData(net.minecraft.client.model.geom.builders.CubeDeformation);
+    Code:
+       0: aload_0
+       1: fconst_0
+       2: invokestatic  #59                 // Method net/minecraft/client/model/HumanoidModel.m_170681_:(Lnet/minecraft/client/model/geom/builders/CubeDeformation;F)Lnet/minecraft/client/model/geom/builders/MeshDefinition;
+       5: astore_1
+       6: aload_1
+       7: invokevirtual #65                 // Method net/minecraft/client/model/geom/builders/MeshDefinition.m_171576_:()Lnet/minecraft/client/model/geom/builders/PartDefinition;
+      10: astore_2
+      11: aload_2
+      12: ldc           #20                 // String breasts
+      14: aload_0
+      15: iconst_0
+      16: invokestatic  #69                 // Method newBreasts:(Lnet/minecraft/client/model/geom/builders/CubeDeformation;I)Lnet/minecraft/client/model/geom/builders/CubeListBuilder;
+      19: getstatic     #75                 // Field net/minecraft/client/model/geom/PartPose.f_171404_:Lnet/minecraft/client/model/geom/PartPose;
+      22: invokevirtual #81                 // Method net/minecraft/client/model/geom/builders/PartDefinition.m_171599_:(Ljava/lang/String;Lnet/minecraft/client/model/geom/builders/CubeListBuilder;Lnet/minecraft/client/model/geom/PartPose;)Lnet/minecraft/client/model/geom/builders/PartDefinition;
+      25: pop
+      26: aload_1
+      27: areturn
+
+  protected static net.minecraft.client.model.geom.builders.CubeListBuilder newBreasts(net.minecraft.client.model.geom.builders.CubeDeformation, int);
+    Code:
+       0: invokestatic  #93                 // Method net/minecraft/client/model/geom/builders/CubeListBuilder.m_171558_:()Lnet/minecraft/client/model/geom/builders/CubeListBuilder;
+       3: astore_2
+       4: invokestatic  #99                 // Method forge/net/mca/Config.getInstance:()Lforge/net/mca/Config;
+       7: getfield      #103                // Field forge/net/mca/Config.enableBoobs:Z
+      10: ifeq          40
+      13: aload_2
+      14: bipush        18
+      16: bipush        21
+      18: iload_1
+      19: iadd
+      20: invokevirtual #107                // Method net/minecraft/client/model/geom/builders/CubeListBuilder.m_171514_:(II)Lnet/minecraft/client/model/geom/builders/CubeListBuilder;
+      23: ldc           #108                // float -3.25f
+      25: ldc           #109                // float -1.25f
+      27: ldc           #110                // float -1.5f
+      29: ldc           #111                // float 6.0f
+      31: ldc           #112                // float 3.0f
+      33: ldc           #112                // float 3.0f
+      35: aload_0
+      36: invokevirtual #116                // Method net/minecraft/client/model/geom/builders/CubeListBuilder.m_171488_:(FFFFFFLnet/minecraft/client/model/geom/builders/CubeDeformation;)Lnet/minecraft/client/model/geom/builders/CubeListBuilder;
+      39: pop
+      40: aload_2
+      41: areturn
+
+  protected java.lang.Iterable<net.minecraft.client.model.geom.ModelPart> m_5607_();
+    Code:
+       0: aload_0
+       1: getfield      #125                // Field f_102808_:Lnet/minecraft/client/model/geom/ModelPart;
+       4: aload_0
+       5: getfield      #128                // Field f_102809_:Lnet/minecraft/client/model/geom/ModelPart;
+       8: invokestatic  #134                // Method com/google/common/collect/ImmutableList.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;
+      11: areturn
+
+  protected java.lang.Iterable<net.minecraft.client.model.geom.ModelPart> m_5608_();
+    Code:
+       0: aload_0
+       1: getfield      #138                // Field f_102810_:Lnet/minecraft/client/model/geom/ModelPart;
+       4: aload_0
+       5: getfield      #141                // Field f_102811_:Lnet/minecraft/client/model/geom/ModelPart;
+       8: aload_0
+       9: getfield      #144                // Field f_102812_:Lnet/minecraft/client/model/geom/ModelPart;
+      12: aload_0
+      13: getfield      #147                // Field f_102813_:Lnet/minecraft/client/model/geom/ModelPart;
+      16: aload_0
+      17: getfield      #150                // Field f_102814_:Lnet/minecraft/client/model/geom/ModelPart;
+      20: invokestatic  #153                // Method com/google/common/collect/ImmutableList.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;
+      23: areturn
+
+  public void m_6839_(T, float, float, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #164                // Method updateArmPoses:(Lnet/minecraft/world/entity/LivingEntity;)V
+       5: aload_0
+       6: aload_1
+       7: fload_3
+       8: fload_2
+       9: fload         4
+      11: invokespecial #166                // Method net/minecraft/client/model/HumanoidModel.m_6839_:(Lnet/minecraft/world/entity/LivingEntity;FFF)V
+      14: aload_0
+      15: dup
+      16: getfield      #169                // Field f_102609_:Z
+      19: aload_1
+      20: checkcast     #171                // class forge/net/mca/entity/VillagerLike
+      23: invokeinterface #175,  1          // InterfaceMethod forge/net/mca/entity/VillagerLike.getAgeState:()Lforge/net/mca/entity/ai/relationship/AgeState;
+      28: getstatic     #178                // Field forge/net/mca/entity/ai/relationship/AgeState.BABY:Lforge/net/mca/entity/ai/relationship/AgeState;
+      31: if_acmpne     38
+      34: iconst_1
+      35: goto          39
+      38: iconst_0
+      39: ior
+      40: putfield      #169                // Field f_102609_:Z
+      43: return
+
+  private void updateArmPoses(T);
+    Code:
+       0: aload_0
+       1: getstatic     #187                // Field net/minecraft/client/model/HumanoidModel$ArmPose.EMPTY:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+       4: putfield      #190                // Field f_102815_:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+       7: aload_0
+       8: getstatic     #187                // Field net/minecraft/client/model/HumanoidModel$ArmPose.EMPTY:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+      11: putfield      #193                // Field f_102816_:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+      14: aload_0
+      15: aload_1
+      16: getstatic     #199                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+      19: aload_0
+      20: aload_1
+      21: getstatic     #199                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+      24: invokevirtual #203                // Method getArmPose:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+      27: invokevirtual #207                // Method applyArmPose:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/client/model/HumanoidModel$ArmPose;)V
+      30: aload_0
+      31: aload_1
+      32: getstatic     #210                // Field net/minecraft/world/InteractionHand.OFF_HAND:Lnet/minecraft/world/InteractionHand;
+      35: aload_0
+      36: aload_1
+      37: getstatic     #210                // Field net/minecraft/world/InteractionHand.OFF_HAND:Lnet/minecraft/world/InteractionHand;
+      40: invokevirtual #203                // Method getArmPose:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+      43: invokevirtual #207                // Method applyArmPose:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/client/model/HumanoidModel$ArmPose;)V
+      46: return
+
+  private net.minecraft.client.model.HumanoidModel$ArmPose getArmPose(T, net.minecraft.world.InteractionHand);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokevirtual #216                // Method net/minecraft/world/entity/LivingEntity.m_21120_:(Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+       5: astore_3
+       6: aload_3
+       7: invokevirtual #222                // Method net/minecraft/world/item/ItemStack.m_41619_:()Z
+      10: ifeq          17
+      13: getstatic     #187                // Field net/minecraft/client/model/HumanoidModel$ArmPose.EMPTY:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+      16: areturn
+      17: aload_1
+      18: invokevirtual #225                // Method net/minecraft/world/entity/LivingEntity.m_6117_:()Z
+      21: ifeq          72
+      24: aload_1
+      25: invokevirtual #229                // Method net/minecraft/world/entity/LivingEntity.m_7655_:()Lnet/minecraft/world/InteractionHand;
+      28: aload_2
+      29: if_acmpne     72
+      32: aload_1
+      33: invokevirtual #233                // Method net/minecraft/world/entity/LivingEntity.m_21212_:()I
+      36: ifle          72
+      39: aload_3
+      40: invokevirtual #237                // Method net/minecraft/world/item/ItemStack.m_41780_:()Lnet/minecraft/world/item/UseAnim;
+      43: astore        4
+      45: aload         4
+      47: getstatic     #243                // Field net/minecraft/world/item/UseAnim.BOW:Lnet/minecraft/world/item/UseAnim;
+      50: if_acmpne     57
+      53: getstatic     #246                // Field net/minecraft/client/model/HumanoidModel$ArmPose.BOW_AND_ARROW:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+      56: areturn
+      57: aload         4
+      59: getstatic     #249                // Field net/minecraft/world/item/UseAnim.CROSSBOW:Lnet/minecraft/world/item/UseAnim;
+      62: if_acmpne     69
+      65: getstatic     #252                // Field net/minecraft/client/model/HumanoidModel$ArmPose.CROSSBOW_CHARGE:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+      68: areturn
+      69: goto          100
+      72: aload_1
+      73: getfield      #255                // Field net/minecraft/world/entity/LivingEntity.f_20911_:Z
+      76: ifne          100
+      79: aload_3
+      80: getstatic     #261                // Field net/minecraft/world/item/Items.f_42717_:Lnet/minecraft/world/item/Item;
+      83: invokevirtual #265                // Method net/minecraft/world/item/ItemStack.m_150930_:(Lnet/minecraft/world/item/Item;)Z
+      86: ifeq          100
+      89: aload_3
+      90: invokestatic  #271                // Method net/minecraft/world/item/CrossbowItem.m_40932_:(Lnet/minecraft/world/item/ItemStack;)Z
+      93: ifeq          100
+      96: getstatic     #274                // Field net/minecraft/client/model/HumanoidModel$ArmPose.CROSSBOW_HOLD:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+      99: areturn
+     100: getstatic     #187                // Field net/minecraft/client/model/HumanoidModel$ArmPose.EMPTY:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+     103: areturn
+
+  private void applyArmPose(T, net.minecraft.world.InteractionHand, net.minecraft.client.model.HumanoidModel$ArmPose);
+    Code:
+       0: aload_3
+       1: getstatic     #187                // Field net/minecraft/client/model/HumanoidModel$ArmPose.EMPTY:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+       4: if_acmpne     8
+       7: return
+       8: aload_1
+       9: aload_2
+      10: invokestatic  #283                // Method isRightArm:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Z
+      13: ifeq          24
+      16: aload_0
+      17: aload_3
+      18: putfield      #193                // Field f_102816_:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+      21: goto          29
+      24: aload_0
+      25: aload_3
+      26: putfield      #190                // Field f_102815_:Lnet/minecraft/client/model/HumanoidModel$ArmPose;
+      29: return
+
+  private static boolean isRightArm(net.minecraft.world.entity.LivingEntity, net.minecraft.world.InteractionHand);
+    Code:
+       0: aload_1
+       1: getstatic     #199                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+       4: if_acmpne     11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: aload_0
+      13: invokevirtual #287                // Method net/minecraft/world/entity/LivingEntity.m_5737_:()Lnet/minecraft/world/entity/HumanoidArm;
+      16: getstatic     #293                // Field net/minecraft/world/entity/HumanoidArm.RIGHT:Lnet/minecraft/world/entity/HumanoidArm;
+      19: if_acmpne     26
+      22: iconst_1
+      23: goto          27
+      26: iconst_0
+      27: if_icmpne     34
+      30: iconst_1
+      31: goto          35
+      34: iconst_0
+      35: ireturn
+
+  public void m_6973_(T, float, float, float, float, float);
+    Code:
+       0: aload_1
+       1: checkcast     #171                // class forge/net/mca/entity/VillagerLike
+       4: invokeinterface #175,  1          // InterfaceMethod forge/net/mca/entity/VillagerLike.getAgeState:()Lforge/net/mca/entity/ai/relationship/AgeState;
+       9: getstatic     #178                // Field forge/net/mca/entity/ai/relationship/AgeState.BABY:Lforge/net/mca/entity/ai/relationship/AgeState;
+      12: if_acmpne     72
+      15: aload_1
+      16: invokevirtual #303                // Method net/minecraft/world/entity/LivingEntity.m_20159_:()Z
+      19: ifne          72
+      22: aload_1
+      23: getfield      #306                // Field net/minecraft/world/entity/LivingEntity.f_19797_:I
+      26: i2f
+      27: ldc_w         #307                // float 12.0f
+      30: fdiv
+      31: f2d
+      32: invokestatic  #313                // Method java/lang/Math.sin:(D)D
+      35: d2f
+      36: fstore_3
+      37: aload_1
+      38: getfield      #306                // Field net/minecraft/world/entity/LivingEntity.f_19797_:I
+      41: i2f
+      42: ldc_w         #314                // float 9.0f
+      45: fdiv
+      46: f2d
+      47: invokestatic  #317                // Method java/lang/Math.cos:(D)D
+      50: d2f
+      51: ldc           #112                // float 3.0f
+      53: fmul
+      54: fstore_2
+      55: fload         5
+      57: aload_1
+      58: getfield      #306                // Field net/minecraft/world/entity/LivingEntity.f_19797_:I
+      61: i2f
+      62: fconst_2
+      63: fdiv
+      64: f2d
+      65: invokestatic  #313                // Method java/lang/Math.sin:(D)D
+      68: d2f
+      69: fadd
+      70: fstore        5
+      72: aload_1
+      73: invokevirtual #320                // Method net/minecraft/world/entity/LivingEntity.m_6162_:()Z
+      76: ifeq          84
+      79: fload_2
+      80: ldc           #112                // float 3.0f
+      82: fdiv
+      83: fstore_2
+      84: fload_2
+      85: ldc_w         #321                // float 0.2f
+      88: aload_1
+      89: checkcast     #171                // class forge/net/mca/entity/VillagerLike
+      92: invokeinterface #325,  1          // InterfaceMethod forge/net/mca/entity/VillagerLike.getRawScaleFactor:()F
+      97: fadd
+      98: fdiv
+      99: fstore_2
+     100: aload_0
+     101: aload_1
+     102: fload_2
+     103: fload_3
+     104: fload         4
+     106: fload         5
+     108: fload         6
+     110: invokespecial #327                // Method net/minecraft/client/model/HumanoidModel.m_6973_:(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V
+     113: aload_1
+     114: checkcast     #171                // class forge/net/mca/entity/VillagerLike
+     117: invokeinterface #331,  1          // InterfaceMethod forge/net/mca/entity/VillagerLike.getVillagerBrain:()Lforge/net/mca/entity/ai/brain/VillagerBrain;
+     122: invokevirtual #336                // Method forge/net/mca/entity/ai/brain/VillagerBrain.isPanicking:()Z
+     125: ifeq          231
+     128: ldc_w         #337                // float 0.017453292f
+     131: fstore        7
+     133: fload         4
+     135: ldc_w         #338                // float 5.0f
+     138: fdiv
+     139: f2d
+     140: invokestatic  #313                // Method java/lang/Math.sin:(D)D
+     143: d2f
+     144: ldc_w         #339                // float 30.0f
+     147: fmul
+     148: ldc_w         #340                // float 180.0f
+     151: fsub
+     152: fload         4
+     154: ldc           #112                // float 3.0f
+     156: fdiv
+     157: f2d
+     158: invokestatic  #313                // Method java/lang/Math.sin:(D)D
+     161: d2f
+     162: ldc           #112                // float 3.0f
+     164: fmul
+     165: fadd
+     166: fload         7
+     168: fmul
+     169: fstore        8
+     171: fload         4
+     173: fconst_2
+     174: fdiv
+     175: f2d
+     176: invokestatic  #313                // Method java/lang/Math.sin:(D)D
+     179: d2f
+     180: ldc_w         #307                // float 12.0f
+     183: fmul
+     184: ldc_w         #341                // float 17.0f
+     187: fsub
+     188: fload         7
+     190: fmul
+     191: fstore        9
+     193: aload_0
+     194: getfield      #144                // Field f_102812_:Lnet/minecraft/client/model/geom/ModelPart;
+     197: fload         8
+     199: putfield      #344                // Field net/minecraft/client/model/geom/ModelPart.f_104203_:F
+     202: aload_0
+     203: getfield      #144                // Field f_102812_:Lnet/minecraft/client/model/geom/ModelPart;
+     206: fload         9
+     208: fneg
+     209: putfield      #347                // Field net/minecraft/client/model/geom/ModelPart.f_104205_:F
+     212: aload_0
+     213: getfield      #141                // Field f_102811_:Lnet/minecraft/client/model/geom/ModelPart;
+     216: fload         8
+     218: fneg
+     219: putfield      #344                // Field net/minecraft/client/model/geom/ModelPart.f_104203_:F
+     222: aload_0
+     223: getfield      #141                // Field f_102811_:Lnet/minecraft/client/model/geom/ModelPart;
+     226: fload         9
+     228: putfield      #347                // Field net/minecraft/client/model/geom/ModelPart.f_104205_:F
+     231: aload_0
+     232: aload_1
+     233: checkcast     #171                // class forge/net/mca/entity/VillagerLike
+     236: aload_1
+     237: invokevirtual #350                // Method net/minecraft/world/entity/LivingEntity.m_6047_:()Z
+     240: invokevirtual #354                // Method applyVillagerDimensions:(Lforge/net/mca/entity/VillagerLike;Z)V
+     243: return
+
+  public void m_102872_(net.minecraft.client.model.HumanoidModel<T>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #363                // Method net/minecraft/client/model/HumanoidModel.m_102872_:(Lnet/minecraft/client/model/HumanoidModel;)V
+       5: aload_1
+       6: instanceof    #2                  // class forge/net/mca/client/model/VillagerEntityBaseModelMCA
+       9: ifeq          47
+      12: aload_1
+      13: checkcast     #2                  // class forge/net/mca/client/model/VillagerEntityBaseModelMCA
+      16: astore_2
+      17: aload_0
+      18: aload_2
+      19: invokevirtual #367                // Method copyCommonAttributes:(Lforge/net/mca/client/model/CommonVillagerModel;)V
+      22: aload_2
+      23: getfield      #49                 // Field breasts:Lnet/minecraft/client/model/geom/ModelPart;
+      26: aload_0
+      27: getfield      #49                 // Field breasts:Lnet/minecraft/client/model/geom/ModelPart;
+      30: getfield      #370                // Field net/minecraft/client/model/geom/ModelPart.f_104207_:Z
+      33: putfield      #370                // Field net/minecraft/client/model/geom/ModelPart.f_104207_:Z
+      36: aload_2
+      37: getfield      #49                 // Field breasts:Lnet/minecraft/client/model/geom/ModelPart;
+      40: aload_0
+      41: getfield      #49                 // Field breasts:Lnet/minecraft/client/model/geom/ModelPart;
+      44: invokevirtual #373                // Method net/minecraft/client/model/geom/ModelPart.m_104315_:(Lnet/minecraft/client/model/geom/ModelPart;)V
+      47: return
+
+  public void m_7695_(com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, int, int, float, float, float, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: iload_3
+       4: iload         4
+       6: fload         5
+       8: fload         6
+      10: fload         7
+      12: fload         8
+      14: invokevirtual #389                // Method renderCommon:(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V
+      17: return
+
+  public net.minecraft.client.model.geom.ModelPart getBreastPart();
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field breasts:Lnet/minecraft/client/model/geom/ModelPart;
+       4: areturn
+
+  public net.minecraft.client.model.geom.ModelPart getBodyPart();
+    Code:
+       0: aload_0
+       1: getfield      #138                // Field f_102810_:Lnet/minecraft/client/model/geom/ModelPart;
+       4: areturn
+
+  public java.lang.Iterable<net.minecraft.client.model.geom.ModelPart> getCommonHeadParts();
+    Code:
+       0: aload_0
+       1: invokevirtual #397                // Method m_5607_:()Ljava/lang/Iterable;
+       4: areturn
+
+  public java.lang.Iterable<net.minecraft.client.model.geom.ModelPart> getCommonBodyParts();
+    Code:
+       0: aload_0
+       1: invokevirtual #400                // Method m_5608_:()Ljava/lang/Iterable;
+       4: areturn
+
+  public java.lang.Iterable<net.minecraft.client.model.geom.ModelPart> getBreastParts();
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field breasts:Lnet/minecraft/client/model/geom/ModelPart;
+       4: invokestatic  #404                // Method com/google/common/collect/ImmutableList.of:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;
+       7: areturn
+
+  public forge.net.mca.entity.ai.relationship.VillagerDimensions$Mutable getDimensions();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field dimensions:Lforge/net/mca/entity/ai/relationship/VillagerDimensions$Mutable;
+       4: areturn
+
+  public float getBreastSize();
+    Code:
+       0: aload_0
+       1: getfield      #409                // Field breastSize:F
+       4: freturn
+
+  public void setBreastSize(float);
+    Code:
+       0: aload_0
+       1: fload_1
+       2: putfield      #409                // Field breastSize:F
+       5: return
+
+  public void m_6839_(net.minecraft.world.entity.Entity, float, float, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #180                // class net/minecraft/world/entity/LivingEntity
+       5: fload_2
+       6: fload_3
+       7: fload         4
+       9: invokevirtual #413                // Method m_6839_:(Lnet/minecraft/world/entity/LivingEntity;FFF)V
+      12: return
+
+  public void m_6973_(net.minecraft.world.entity.Entity, float, float, float, float, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #180                // class net/minecraft/world/entity/LivingEntity
+       5: fload_2
+       6: fload_3
+       7: fload         4
+       9: fload         5
+      11: fload         6
+      13: invokevirtual #415                // Method m_6973_:(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V
+      16: return
+}
+
+========================================
+VILLAGER DIMENSIONS
+========================================
+Compiled from "VillagerDimensions.java"
+public interface forge.net.mca.entity.ai.relationship.VillagerDimensions {
+  public abstract float getWidth();
+
+  public abstract float getHeight();
+
+  public abstract float getBreasts();
+
+  public abstract float getHead();
+}
+
+========================================
+VILLAGER DIMENSIONS MUTABLE
+========================================
+Compiled from "VillagerDimensions.java"
+public final class forge.net.mca.entity.ai.relationship.VillagerDimensions$Mutable implements forge.net.mca.entity.ai.relationship.VillagerDimensions {
+  private float width;
+
+  private float height;
+
+  private float breasts;
+
+  private float head;
+
+  public forge.net.mca.entity.ai.relationship.VillagerDimensions$Mutable(forge.net.mca.entity.ai.relationship.VillagerDimensions);
+    Code:
+       0: aload_0
+       1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: invokevirtual #22                 // Method set:(Lforge/net/mca/entity/ai/relationship/VillagerDimensions;)V
+       9: return
+
+  public float getWidth();
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field width:F
+       4: freturn
+
+  public float getHeight();
+    Code:
+       0: aload_0
+       1: getfield      #32                 // Field height:F
+       4: freturn
+
+  public float getBreasts();
+    Code:
+       0: aload_0
+       1: getfield      #35                 // Field breasts:F
+       4: freturn
+
+  public float getHead();
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field head:F
+       4: freturn
+
+  public void interpolate(forge.net.mca.entity.ai.relationship.VillagerDimensions, forge.net.mca.entity.ai.relationship.VillagerDimensions, float);
+    Code:
+       0: aload_0
+       1: fload_3
+       2: aload_1
+       3: invokeinterface #45,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getWidth:()F
+       8: aload_2
+       9: invokeinterface #45,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getWidth:()F
+      14: invokestatic  #51                 // Method net/minecraft/util/Mth.m_14179_:(FFF)F
+      17: putfield      #29                 // Field width:F
+      20: aload_0
+      21: fload_3
+      22: aload_1
+      23: invokeinterface #53,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getHeight:()F
+      28: aload_2
+      29: invokeinterface #53,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getHeight:()F
+      34: invokestatic  #51                 // Method net/minecraft/util/Mth.m_14179_:(FFF)F
+      37: putfield      #32                 // Field height:F
+      40: aload_0
+      41: fload_3
+      42: aload_1
+      43: invokeinterface #55,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getBreasts:()F
+      48: aload_2
+      49: invokeinterface #55,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getBreasts:()F
+      54: invokestatic  #51                 // Method net/minecraft/util/Mth.m_14179_:(FFF)F
+      57: putfield      #35                 // Field breasts:F
+      60: aload_0
+      61: fload_3
+      62: aload_1
+      63: invokeinterface #57,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getHead:()F
+      68: aload_2
+      69: invokeinterface #57,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getHead:()F
+      74: invokestatic  #51                 // Method net/minecraft/util/Mth.m_14179_:(FFF)F
+      77: putfield      #38                 // Field head:F
+      80: return
+
+  public void set(forge.net.mca.entity.ai.relationship.VillagerDimensions);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #45,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getWidth:()F
+       7: putfield      #29                 // Field width:F
+      10: aload_0
+      11: aload_1
+      12: invokeinterface #53,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getHeight:()F
+      17: putfield      #32                 // Field height:F
+      20: aload_0
+      21: aload_1
+      22: invokeinterface #55,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getBreasts:()F
+      27: putfield      #35                 // Field breasts:F
+      30: aload_0
+      31: aload_1
+      32: invokeinterface #57,  1           // InterfaceMethod forge/net/mca/entity/ai/relationship/VillagerDimensions.getHead:()F
+      37: putfield      #38                 // Field head:F
+      40: return
+}

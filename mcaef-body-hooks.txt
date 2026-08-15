@@ -1,0 +1,41 @@
+src/main/java/dev/mcaefcompat/client/NoopMcaPatchedLayer.java:3:import com.mojang.blaze3d.vertex.PoseStack;
+src/main/java/dev/mcaefcompat/client/NoopMcaPatchedLayer.java:8:import yesman.epicfight.api.utils.math.OpenMatrix4f;
+src/main/java/dev/mcaefcompat/client/NoopMcaPatchedLayer.java:20:            PoseStack poseStack,
+src/main/java/dev/mcaefcompat/client/NoopMcaPatchedLayer.java:23:            OpenMatrix4f[] poses,
+src/main/java/dev/mcaefcompat/client/McaSkinPatchedLayer.java:3:import com.mojang.blaze3d.vertex.PoseStack;
+src/main/java/dev/mcaefcompat/client/McaSkinPatchedLayer.java:17:import yesman.epicfight.api.utils.math.OpenMatrix4f;
+src/main/java/dev/mcaefcompat/client/McaSkinPatchedLayer.java:35:            PoseStack poseStack,
+src/main/java/dev/mcaefcompat/client/McaSkinPatchedLayer.java:38:            OpenMatrix4f[] poses,
+src/main/java/dev/mcaefcompat/client/McaSkinPatchedLayer.java:77:                poseStack,
+src/main/java/dev/mcaefcompat/client/McaClothingPatchedLayer.java:3:import com.mojang.blaze3d.vertex.PoseStack;
+src/main/java/dev/mcaefcompat/client/McaClothingPatchedLayer.java:17:import yesman.epicfight.api.utils.math.OpenMatrix4f;
+src/main/java/dev/mcaefcompat/client/McaClothingPatchedLayer.java:35:            PoseStack poseStack,
+src/main/java/dev/mcaefcompat/client/McaClothingPatchedLayer.java:38:            OpenMatrix4f[] poses,
+src/main/java/dev/mcaefcompat/client/McaClothingPatchedLayer.java:83:                poseStack,
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:3:import com.mojang.blaze3d.vertex.PoseStack;
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:21:import yesman.epicfight.api.utils.math.OpenMatrix4f;
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:74:            PoseStack poseStack,
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:77:            OpenMatrix4f[] poses,
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:142:                        poseStack,
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:162:                        poseStack,
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:187:                        poseStack,
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:208:                        poseStack,
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:223:            PoseStack poseStack,
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:227:            OpenMatrix4f[] poses,
+src/main/java/dev/mcaefcompat/client/McaHairPatchedLayer.java:235:                poseStack,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:3:import com.mojang.blaze3d.vertex.PoseStack;
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:23:import yesman.epicfight.api.utils.math.OpenMatrix4f;
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:94:            PoseStack poseStack,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:97:            OpenMatrix4f[] poses,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:130:                        poseStack,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:158:                    poseStack,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:179:                    poseStack,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:205:                        poseStack,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:230:                        poseStack,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:256:                        poseStack,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:274:            PoseStack poseStack,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:278:            OpenMatrix4f[] poses,
+src/main/java/dev/mcaefcompat/client/McaFacePatchedLayer.java:297:                poseStack,
+src/main/java/dev/mcaefcompat/client/McaMeshVisibility.java:30:        humanoid.torso.setHidden(false);
+src/main/java/dev/mcaefcompat/client/McaPlayerVisibilityGuard.java:9:import net.minecraft.client.model.geom.ModelPart;
+src/main/java/dev/mcaefcompat/client/McaPlayerVisibilityGuard.java:108:            ModelPart part,
