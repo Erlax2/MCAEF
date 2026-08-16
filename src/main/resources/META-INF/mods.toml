@@ -28,7 +28,7 @@ side="BOTH"
 [[dependencies.mcaefcompat]]
 modId="mca"
 mandatory=true
-versionRange="[7.6.28,)"
+versionRange="[7.6.28-beta.10,)"
 ordering="AFTER"
 side="CLIENT"
 
