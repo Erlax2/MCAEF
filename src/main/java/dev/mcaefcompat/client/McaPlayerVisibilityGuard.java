@@ -64,11 +64,20 @@ public final class McaPlayerVisibilityGuard {
             return;
         }
 
-        String playerModel =
-                CommonVillagerModel
-                        .getVillager(player)
-                        .getPlayerModel()
-                        .name();
+        var villager = CommonVillagerModel.getVillager(player);
+
+        /*
+         * MCA can temporarily have incomplete player data during respawn,
+         * dimension changes or initial synchronization.
+         *
+         * In that state there is nothing MCAEF should repair yet, so simply
+         * skip this render frame and try again on the next one.
+         */
+        if (villager == null || villager.getPlayerModel() == null) {
+            return;
+        }
+
+        String playerModel = villager.getPlayerModel().name();
 
         if (!"VILLAGER".equals(playerModel)) {
             return;
