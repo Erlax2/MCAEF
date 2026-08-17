@@ -3,6 +3,7 @@ package dev.mcaefcompat.client;
 import dev.mcaefcompat.MCAEpicFightCompat;
 
 import forge.net.mca.client.gui.VillagerEditorScreen;
+import forge.net.mca.entity.VillagerEntityMCA;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -66,8 +67,14 @@ public final class McaEditorRenderBypass {
         Object entity =
                 event.getEntity();
 
+        /*
+         * VillagerEditorScreen usa tanto 'villager' como una segunda entidad
+         * 'villagerVisualization' para las miniaturas de ropa/pelo/skin.
+         * Mientras esta GUI esté abierta, cualquier VillagerEntityMCA
+         * renderizado aquí es un preview y Epic Fight no debe sustituirlo.
+         */
         boolean villagerPreview =
-                entity == editor.getVillager();
+                entity instanceof VillagerEntityMCA;
 
         boolean playerPreview =
                 entity instanceof AbstractClientPlayer player
@@ -94,7 +101,7 @@ public final class McaEditorRenderBypass {
             loggedVillagerPreview = true;
 
             System.out.println(
-                    "[MCAEFCompat] 0.0.19 MCA Editor: "
+                    "[MCAEFCompat] MCA Editor: "
                             + "VILLAGER preview bypassed from Epic Fight/EFMCA"
                             + " entity="
                             + entity.getClass().getName()
@@ -116,7 +123,7 @@ public final class McaEditorRenderBypass {
             loggedPlayerPreview = true;
 
             System.out.println(
-                    "[MCAEFCompat] 0.0.19 MCA Editor: "
+                    "[MCAEFCompat] MCA Editor: "
                             + "PLAYER preview bypassed from Epic Fight"
                             + " renderer="
                             + event.getRenderer()

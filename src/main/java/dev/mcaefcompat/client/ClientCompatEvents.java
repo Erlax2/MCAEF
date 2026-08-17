@@ -18,8 +18,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import yesman.epicfight.api.client.model.SkinnedMesh;
+import yesman.epicfight.api.utils.math.Vec3f;
 import yesman.epicfight.client.ClientEngine;
 import yesman.epicfight.client.renderer.patched.layer.PatchedLayer;
+import yesman.epicfight.client.renderer.patched.layer.RenderOriginalModelLayer;
 import yesman.epicfight.client.renderer.patched.entity.PPlayerRenderer;
 import yesman.epicfight.client.world.capabilites.entitypatch.player.AbstractClientPlayerPatch;
 
@@ -66,6 +68,7 @@ public final class ClientCompatEvents {
 
     private static boolean loggedBridge = false;
     private static boolean loggedEditor = false;
+    private static boolean loggedExternalLayers = false;
 
     private ClientCompatEvents() {
     }
@@ -144,7 +147,7 @@ public final class ClientCompatEvents {
                 loggedEditor = true;
 
                 System.out.println(
-                        "[MCAEFCompat] 0.0.19 MCA GUI -> "
+                        "[MCAEFCompat] MCA GUI -> "
                                 + "original MCA layers restored"
                                 + " screen="
                                 + Minecraft.getInstance().screen.getClass().getName()
@@ -157,6 +160,12 @@ public final class ClientCompatEvents {
 
             return;
         }
+
+        /*
+         * Layers visuales externos que Epic Fight no conoce de fábrica.
+         * Esto no depende del PlayerModel seleccionado en MCA.
+         */
+        installExternalLayerBridges(renderer, mappings);
 
         /*
          * Solo hacemos el bridge cuando el modelo seleccionado
@@ -298,7 +307,7 @@ public final class ClientCompatEvents {
             loggedBridge = true;
 
             System.out.println(
-                    "[MCAEFCompat] 0.0.19 MCA Skin -> Epic Fight mesh"
+                    "[MCAEFCompat] MCA Skin -> Epic Fight mesh"
                             + " renderer="
                             + renderer.getClass().getName()
                             + " mesh="
@@ -373,6 +382,132 @@ public final class ClientCompatEvents {
                     entry.getKey(),
                     entry.getValue()
             );
+        }
+    }
+
+    /*
+     * Epic Fight solo procesa RenderLayers para los que existe un PatchedLayer.
+     * Estas clases son opcionales: se cargan por nombre para que MCAEF no
+     * dependa obligatoriamente de YDM ni de Curios.
+     *
+     * RenderOriginalModelLayer vuelve a ejecutar la capa vanilla dentro de la
+     * pose del armature de Epic Fight. Torso es una primera referencia segura
+     * para capas corporales/espalda; si un accesorio concreto necesita otra
+     * articulación lo podremos especializar después.
+     */
+    /*
+     * ============================================================
+     * YDM & Curios Compat
+     * ============================================================
+     *
+     * YDM puede aparecer demasiado tarde para el escaneo inicial de layers
+     * que hace Epic Fight. Lo registramos con el mismo fallback espacial que
+     * usa Epic Fight para una RenderLayer vanilla desconocida:
+     *
+     *     Root + (0, 1.15, 0)
+     *
+     * Curios necesita un tratamiento distinto. Su CuriosLayer delega en
+     * ICurioRenderer y esos renderers esperan trabajar desde el espacio del
+     * PlayerRenderer vanilla. El fallback de Epic Fight puede empujar toda la
+     * capa por el armature antes de que Curios haga sus propias transforms.
+     *
+     * CuriosCompatPatchedLayer mantiene la capa en el espacio base de la
+     * entidad, aplica la conversión de coordenadas vanilla y deja que Curios
+     * ejecute sus renderers normalmente.
+     *
+     * Todo se carga por nombre para mantener YDM y Curios opcionales.
+     */
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    private static void installExternalLayerBridges(
+            PPlayerRenderer renderer,
+            Map<Class<?>, PatchedLayer> mappings
+    ) {
+        boolean ydm = false;
+        boolean curios = false;
+
+        ydm |= installYdmLayer(
+                renderer,
+                "com.minecraftserverzone.weaponmaster.itemlayers.HumanoidItemLayer"
+        );
+
+        ydm |= installYdmLayer(
+                renderer,
+                "com.minecraftserverzone.weaponmaster.itemlayers.HumanoidItemLayerLac"
+        );
+
+        curios = installCuriosLayer(
+                renderer,
+                "top.theillusivec4.curios.client.render.CuriosLayer"
+        );
+
+        if ((ydm || curios) && !loggedExternalLayers) {
+            loggedExternalLayers = true;
+
+            System.out.println(
+                    "[MCAEFCompat] YDM & Curios Compat: "
+                            + "YDM=" + (ydm ? "bridged" : "not loaded")
+                            + ", Curios=" + (curios ? "bridged" : "not loaded")
+            );
+        }
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    private static boolean installYdmLayer(
+            PPlayerRenderer renderer,
+            String layerClassName
+    ) {
+        try {
+            Class<?> layerClass = Class.forName(
+                    layerClassName,
+                    false,
+                    ClientCompatEvents.class.getClassLoader()
+            );
+
+            renderer.addPatchedLayerAlways(
+                    (Class) layerClass,
+                    new ExternalHumanoidPosePatchedLayer()
+            );
+
+            return true;
+
+        } catch (ClassNotFoundException ignored) {
+            return false;
+        } catch (LinkageError error) {
+            System.out.println(
+                    "[MCAEFCompat] YDM & Curios Compat: YDM unavailable -> "
+                            + error
+            );
+            return false;
+        }
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    private static boolean installCuriosLayer(
+            PPlayerRenderer renderer,
+            String layerClassName
+    ) {
+        try {
+            Class<?> layerClass = Class.forName(
+                    layerClassName,
+                    false,
+                    ClientCompatEvents.class.getClassLoader()
+            );
+
+            renderer.addPatchedLayerAlways(
+                    (Class) layerClass,
+                    new ExternalHumanoidPosePatchedLayer()
+            );
+
+            return true;
+
+        } catch (ClassNotFoundException ignored) {
+            return false;
+        } catch (LinkageError error) {
+            System.out.println(
+                    "[MCAEFCompat] YDM & Curios Compat: Curios unavailable -> "
+                            + error
+            );
+            return false;
         }
     }
 
