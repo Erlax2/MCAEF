@@ -84,22 +84,33 @@ public final class McaPlayerVisibilityGuard {
         }
 
         StringBuilder repaired =
-                new StringBuilder();
+        new StringBuilder();
 
-        /*
-         * Solo geometría CORE.
-         *
-         * No forzamos jacket/hat/sleeves/pants porque esos sí pueden
-         * estar ocultos legítimamente por opciones de skin.
-         */
-        repair(model.head, "head", repaired);
-        repair(model.body, "body", repaired);
+	/*
+	 * Solo geometría CORE.
+	 *
+	 * No forzamos jacket/hat/sleeves/pants porque esos sí pueden
+	 * estar ocultos legítimamente por opciones de skin.
+	 *
+	 * First Person Model oculta intencionalmente la cabeza del
+	 * jugador local en primera persona. No debemos "repararla"
+	 * en ese caso o volveríamos a hacer visible la cabeza MCA
+	 * alrededor de la cámara.
+	 */
+	boolean firstPerson =
+                mc.options.getCameraType().isFirstPerson();
 
-        repair(model.leftArm, "leftArm", repaired);
-        repair(model.rightArm, "rightArm", repaired);
+	if (!firstPerson) {
+	    repair(model.head, "head", repaired);
+	}
 
-        repair(model.leftLeg, "leftLeg", repaired);
-        repair(model.rightLeg, "rightLeg", repaired);
+	repair(model.body, "body", repaired);
+
+	repair(model.leftArm, "leftArm", repaired);
+	repair(model.rightArm, "rightArm", repaired);
+
+	repair(model.leftLeg, "leftLeg", repaired);
+	repair(model.rightLeg, "rightLeg", repaired);
 
         if (repaired.length() > 0 && !loggedCorruption) {
 
